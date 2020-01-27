@@ -1,40 +1,68 @@
+const deleteMe = () => console.trace('Alloha');
 
-function convert(timeline, text, delay, shift, startsFrom) {
+let Sub = {
+    timeline: ["00:01", "00:02"],
+    text: ["You must input some data", "otherwise this app makes no sense"],
+    names: [],
+    delay: 0,
+    shift: 500,
+    startsFrom: 1,
+    margin: 10,
+    srt: [],
+    set: function (){
+
+    }
+};
+
+// timeline, text, delay, shift, startsFrom
+function convert() {
+    let length = Sub.timeline.length;
     'use strict';
     //this size is choosen because of 4 rows on each sub + empty sub
     // 3 - cause empty sub doesn't need text
-    let clear_arr = new Array((text.length * 4) + 3);
-    let margin = 10;
+    let clear_arr = new Array((length * 4) + 3);
+    
+    // let margin = 10;
 
     //converting timeline to ms
-    timeline = toMiliSec(timeline);
+    Sub.timeline = toMiliSec(Sub.timeline);
+
+
+    console.log("%c starting params", "color: green")
+    //Computed property names
+    //console.log({delay, shift, startsFrom});
+    // display info as a table
+    //console.table([delay, shift, startsFrom]);
+    //trace shows from where function was called 
+    deleteMe();
+
 
     //start and end codes of sub
-    let starts = new Array(timeline.length);
-    let ends = new Array(timeline.length);
+    let starts = new Array(length);
+    let ends = new Array(length);
 
     //this is for starts timecodes
     //adding a delay before start
     //+ shift subs to "right" + margin
     for (let i = 0; i < starts.length; i++) {
-        starts[i] = timeline[i];
-        starts[i] += (delay * 1000); // *1000 because we take delay in seconds but working with ms
-        starts[i] += shift; //shifting to right
-        starts[i] += margin; // adding margins beetwen subs	
+        starts[i] = Sub.timeline[i];
+        starts[i] += (Sub.delay * 1000); // *1000 because we take delay in seconds but working with ms
+        starts[i] += Sub.shift; //shifting to right
+        starts[i] += Sub.margin; // adding margins beetwen subs	
     }
 
     //this one for ends
     //the diff is that ends have no margin
     for (let i = 0; i < ends.length - 1; i++) {
-        ends[i] = timeline[i + 1];
-        ends[i] += (delay * 1000); // *1000 because we take delay in seconds but working with ms
-        ends[i] += shift; //shifting to right
+        ends[i] = Sub.timeline[i + 1];
+        ends[i] += (Sub.delay * 1000); // *1000 because we take delay in seconds but working with ms
+        ends[i] += Sub.shift; //shifting to right
     }
     //end time of last sub
     ends[ends.length - 1] = starts[starts.length - 1] + 1000;
 
     // catching up those 1sec parts
-    for (let i = 0; i < timeline.length; i++) {
+    for (let i = 0; i < length; i++) {
         if ((ends[i] - starts[i]) < 1000) {
             console.log("less than 1 sec: " + ends[i]);
             let delta = 1000 - (ends[i] - starts[i]);
@@ -49,25 +77,34 @@ function convert(timeline, text, delay, shift, startsFrom) {
     // let start;
     // let end;
     //-3 because empty sub
-    for (let i = 0; i < clear_arr.length - 3; i += 4) {
+    for (let i = 0; i < (length * 4); i += 4) {
         let start = msToTime(starts[counter]);
         let end = msToTime(ends[counter]);
-        clear_arr[i] = counter + startsFrom;
-        clear_arr[i + 1] = start + " --> " + end;
-        clear_arr[i + 2] = text[counter];
-        clear_arr[i + 3] = "";
+        // clear_arr[i] = counter + startsFrom;
+        // clear_arr[i + 1] = start + " --> " + end;
+        // clear_arr[i + 2] = text[counter];
+        // clear_arr[i + 3] = "";
+        Sub.srt.push(counter + Sub.startsFrom);
+        Sub.srt.push(start + " --> " + end);
+        Sub.srt.push(Sub.text[counter]);
+        Sub.srt.push("");
         counter++;
     }
 
     //empty sub
     //counter-1 cause of counter++ in the end of previos cycle
-    clear_arr[clear_arr.length - 3] = counter + startsFrom;
-    clear_arr[clear_arr.length - 2] = msToTime(ends[counter - 1] + margin) +
-        " --> " +
-        msToTime(ends[counter - 1] + 1000 + margin);
-    clear_arr[clear_arr.length - 1] = "  ";
+    // clear_arr[clear_arr.length - 3] = counter + startsFrom;
+    // clear_arr[clear_arr.length - 2] = msToTime(ends[counter - 1] + margin) +
+    //     " --> " +
+    //     msToTime(ends[counter - 1] + 1000 + margin);
+    // clear_arr[clear_arr.length - 1] = "  ";
+    Sub.srt.push(counter + Sub.startsFrom);
+    Sub.srt.push(msToTime(ends[counter - 1] + Sub.margin) +
+                " --> " +
+                 msToTime(ends[counter - 1] + 1000 + Sub.margin));
+    Sub.srt.push(" ");
 
-    return clear_arr;
+    // return clear_arr;
 }
 
 //computing miliseconds
@@ -89,6 +126,7 @@ function toMiliSec(timeline) {
         //computing miliseconds
         mili_s[t] = (minutes[t] * 60 + seconds[t]) * 1000;
     }
+    deleteMe();
     return mili_s;
 }
 
@@ -106,6 +144,14 @@ function msToTime(s) {
     s = (s - secs) / 60;
     let mins = s % 60;
     let hrs = (s - mins) / 60;
-
+    deleteMe();
     return pad(hrs) + ':' + pad(mins) + ':' + pad(secs) + ',' + pad(ms, 3);
+}
+
+function addNames(){
+    for (i = 0; i < Sub.names.length; i++){
+        if (Sub.names[i] == "Диктор"){
+            Sub.text[i] = "(Диктор) " + Sub.text[i];
+        }
+    }
 }

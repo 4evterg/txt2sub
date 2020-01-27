@@ -1,4 +1,5 @@
 (function connectAll() {
+	
     var controller = document.createElement("script");  
     var model = document.createElement("script");  
     controller.src = "js/controller.js";  

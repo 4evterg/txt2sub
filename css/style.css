@@ -3,7 +3,7 @@
 textarea{
 	min-height: 50px;
 	width: 100%;
-	height: calc(100% - 50px);
+	height: calc(100% - 70px);
 	resize: none;
 	overflow-x: hidden;
 }
@@ -19,6 +19,8 @@ textarea:focus, input:focus{
 	outline-style: none; 
 	border-color: #dc3545;
 }
+
+
 
 /*TOP PART*/
 .logo{
@@ -85,6 +87,11 @@ textarea:focus, input:focus{
 }
 #errors{
 	color: red;
+}
+
+.countRows{
+	color: #fff;
+	font-weight: bold;
 }
 
 /*LOWER PART*/
