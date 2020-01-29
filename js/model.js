@@ -1,5 +1,10 @@
+//using those to count lines in textarea
+String.prototype.lines = function () {return this.split(/\r*\n/);}
+String.prototype.lineCount = function () {return this.lines().length;}
+
 const deleteMe = () => console.trace('Alloha');
 
+//main object
 let Sub = {
     timeline: ["00:01", "00:02"],
     text: ["You must input some data", "otherwise this app makes no sense"],
@@ -74,16 +79,9 @@ function convert() {
     }
 
     let counter = 0;
-    // let start;
-    // let end;
-    //-3 because empty sub
     for (let i = 0; i < (length * 4); i += 4) {
         let start = msToTime(starts[counter]);
         let end = msToTime(ends[counter]);
-        // clear_arr[i] = counter + startsFrom;
-        // clear_arr[i + 1] = start + " --> " + end;
-        // clear_arr[i + 2] = text[counter];
-        // clear_arr[i + 3] = "";
         Sub.srt.push(counter + Sub.startsFrom);
         Sub.srt.push(start + " --> " + end);
         Sub.srt.push(Sub.text[counter]);
@@ -93,11 +91,6 @@ function convert() {
 
     //empty sub
     //counter-1 cause of counter++ in the end of previos cycle
-    // clear_arr[clear_arr.length - 3] = counter + startsFrom;
-    // clear_arr[clear_arr.length - 2] = msToTime(ends[counter - 1] + margin) +
-    //     " --> " +
-    //     msToTime(ends[counter - 1] + 1000 + margin);
-    // clear_arr[clear_arr.length - 1] = "  ";
     Sub.srt.push(counter + Sub.startsFrom);
     Sub.srt.push(msToTime(ends[counter - 1] + Sub.margin) +
                 " --> " +

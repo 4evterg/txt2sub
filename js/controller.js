@@ -68,26 +68,32 @@ function errors() {
   // return timeline;
 }
 
-// (() => {console.log("wtf");})
+// (() => {
+//   let textareas = document.querySelectorAll("textarea");
+//   for(let i = 0; i < textareas.length; i++){
+//     textareas[i].onchange = countRows();
+//     textareas[i].value = "hello";
+//   }
+// })()
 
 function countRows() {
   let color = "red";
-  if (timeline_box.value.length == text_box.value.length) {
+  if (timeline_box.value.lineCount() == text_box.value.lineCount()) {
     color = "green";
   }
   let spans = document.querySelectorAll(".countRows");
   rowsOf = [
-    timeline_box.value.length,
-    names_box.value.length,
-    text_box.value.length
+    timeline_box.value.lineCount(),
+    names_box.value.lineCount(),
+    text_box.value.lineCount()
   ];
   for (let i = 0; i < spans.length; i++) {
     spans[i].innerHTML = rowsOf[i];
     spans[i].style.color = color;
   }
   if (
-    names_box.value.length != timeline_box.value.ength ||
-    names_box.value.length != text_box.value.length
+    names_box.value.lineCount() != timeline_box.value.lineCount() ||
+    names_box.value.lineCount() != text_box.value.lineCount()
   ) {
     document.querySelector(".countNames").style.color = "red";
   }

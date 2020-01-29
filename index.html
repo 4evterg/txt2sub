@@ -18,21 +18,34 @@
     <!-- logo, name, settings -->
     <div class="container">
       <div class="row">
-        <div class="col-md-5">
-          <img src="images/logo.png" alt="" class="logo" />
-          <span class="logo-text">TXT2SRT</span>
-        </div>
-        <div class="col-md-2 p-0">
+
+<!--         <div class="col-md-2 p-0">
           <input
             class="btn btn-danger btn-block"
             type="button"
             value="convert!"
             onclick="input()"
           />
-        </div>
+        </div> -->
         <!-- settings -->
+      </div>
+    </div>
+
+    <!-- errors display -->
+    <div id="errors"></div>
+
+    <!-- Manual input -->
+    <div class="jumbotron screen">
+    <div class="container h-100">
+      <div class="row">
         <div class="col-md-5">
-          <div class="var_box">
+          <div class="logo-box">
+            <img src="images/logo.png" alt="" class="logo" />
+            <span class="logo-text">TXT2SRT</span>
+          </div>            
+        </div>
+        <div class="col flex-wrap">
+          <div class="card var_box">         
             <div>
               <span>delay:</span>
               <input type="text" id="delay_box" value="20" />
@@ -49,58 +62,61 @@
             <div>
               <span>start:</span>
               <input type="text" id="start_box" placeholder="1" value="1" />
-            </div>
-          </div>
+            </div>             
+          </div>          
         </div>
       </div>
-    </div>
-
-    <!-- errors display -->
-    <div id="errors"></div>
-
-    <!-- Manual input -->
-    <div class="jumbotron screen">
-      <!-- input data -->
-      <div class="jumbotron blackstrip h-50">
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <span class="box_header text-center">time</span>
-              <textarea
-                name="timeline"
-                id="timeline_box"
-                placeholder="time goes here"
-              ></textarea>
-              <span class="countRows">Strings</span>
-            </div>
-            <div class="col">
-              <span class="box_header text-center">names</span>
-              <textarea
-                name="text"
-                id="names_box"
-                placeholder="names goes here"
-              ></textarea>
-              <span class="countRows countNames">Strings</span>
-            </div>
-            <div class="col">
-              <span class="box_header text-center">text</span>
-              <textarea id="text_box" placeholder="text goes here"></textarea>
-              <span class="countRows">Strings</span>
-            </div>
+      <div class="row input-row">
+        <div class="col">
+          <span class="box_header text-center">time</span>
+          <div class="card">
+            
+            <textarea
+              name="timeline"
+              id="timeline_box"
+              placeholder="time goes here"                
+            ></textarea>
+            <span class="countRows">Strings</span>
           </div>
         </div>
+        <div class="col">
+          <span class="box_header text-center">names</span>
+          <div class="card">
+            
+            <textarea
+              name="text"
+              id="names_box"
+              placeholder="names goes here"               
+            ></textarea>
+            <span class="countRows">Strings</span>
+          </div>          
+        </div>
+        <div class="col">
+          <span class="box_header text-center">text</span>
+          <div class="card">
+            
+            <textarea 
+              id="text_box" 
+              placeholder="text goes here"              
+              ></textarea>
+            <span class="countRows">Strings</span>
+          </div>          
+        </div>
       </div>
-
       <!-- ouptut -->
-      <div class="container output h-50">
-        <div class="row">
-          <div class="col">
-            <span class="box_header text-center">result</span>
-            <textarea id="output_box"></textarea>
-          </div>
-        </div>
+      <div class="row output-row">
+          <div class="col" style="padding-right: 0px; padding-left: 0px">
+            <div class="card">
+              <span class="box_header text-center">result</span>
+              <textarea id="output_box"></textarea>
+            </div>
+          </div>        
       </div>
+    </div>      
     </div>
+
+
+
 
     <script src="js/common.js"></script>
   </body>
