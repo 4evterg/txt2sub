@@ -1,6 +1,27 @@
+html{
+	/* bg of page */
+	--page_bg: #f5eded;
+	/* border of cards and text in central row */
+	--cs_color: #3e3636;
+	/* default bg of central strip */
+	--cs_defaultbg: #62929a;
+	/* error color of central strip */
+	--cs_error: #d72323;
+	/* OK color of central strip */
+	--cs_ok: #0b8457;;
+	/* Warning color of central strip */
+	--cs_warning: #faee1c;
+	/* central textarea placeholders text */
+	--cs_ta_ph: #6d5c5c;
+}
+title{
+	text-decoration-style: dashed;
+}
+
 /*main style*/
 body{
-	/*margin: 20px;*/
+	background-color: var(--page_bg);
+	height: 100vh;
 }
 textarea{
 	min-height: 50px;
@@ -8,21 +29,30 @@ textarea{
 	height: 100%;
 	resize: none;
 	overflow-x: hidden;
+	background-color: unset;
 }
 
-textarea, input{
+input{
 	border-width: 2px;
 	border-radius: 3px;
 	border-style: dashed;
 	border-color: #000;
 }
 
+textarea{
+/* border: none; */
+scrollbar-color: light;
+}
+
+textarea::placeholder{
+	color: var(--cs_ta_ph);
+}
 textarea:focus, input:focus{
 	outline-style: none; 
 	border-color: #dc3545;
 }
 .screen{
-	height: 100vh;
+	/* height: 100vh; */
 	margin-bottom: 0;
 	background-color: unset;
 	position: relative;
@@ -38,8 +68,17 @@ textarea:focus, input:focus{
 	height: calc(100% - 30px);
 } 
 .output-row{
-	margin-top: 20px;
+	margin-top: 20px;	
 }
+.input-row{
+	/* background-color: #efecec; */
+	color: #3e3636;
+	padding-bottom: 10px;
+	border-radius: 10px;
+	/* box-shadow: 6px 6px 12px rgba(0, 0, 0, 1),
+				-6px -6px 12px rgba(255, 255, 255, 0.3);	 */
+}
+
 
 /*TOP PART*/
 .logo-box{
@@ -95,16 +134,18 @@ textarea:focus, input:focus{
 
 /*MIDDLE PART*/
 .blackstrip{
-	background-color: #000;
+	background-color: var(--cs_defaultbg);
 	border-radius: 0px;
 	padding-top: 0px;
 	padding-bottom: 20px;
-	margin-bottom: 0px
+	margin-bottom: 0px;
+	
+	box-shadow: inset 6px 6px 12px rgba(0, 0, 0, 1),
+							inset -6px -6px 12px rgba(255, 255, 255, 0.3);
 }
 .blackstrip div, .output div{
 	height: 100%;
 }
-
 /*headers of textarea*/
 .box_header{
 	font-size: 20px;
@@ -121,24 +162,21 @@ textarea:focus, input:focus{
 }
 
 .countRows{
-	/*color: #fff;*/
+	color: #3e3636;
 	font-weight: bold;
 }
 .card{
 	border-radius: 10px;
 	border: none;
-	box-shadow: 6px 6px 10px rgba(0, 0, 0, 1),
-				-6px -6px 12px rgba(255, 255, 255, 0.3);
-	padding: 10px;
+	/* box-shadow: 6px 6px 10px rgba(0, 0, 0, 1),
+				-6px -6px 12px rgba(255, 255, 255, 0.3); */
+	padding: 5px;
 	color: #000;
-	
+	border: 2px dashed #000;
 }
-.input-row{
-	background-color: #797979;
-	padding-bottom: 10px;
-	border-radius: 10px;
-	box-shadow: 6px 6px 12px rgba(0, 0, 0, 1),
-				-6px -6px 12px rgba(255, 255, 255, 0.3);	
+.input-row .card{
+	background-color: unset;
+	border-color: #3e3636;	
 }
 
 /*LOWER PART*/

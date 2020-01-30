@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>text2srt</title>
+    <title>TEXT2SRT</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="content-language" content="ru" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <!-- Styles -->
     <link type="text/css" rel="stylesheet" href="css/reset.css" />
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
@@ -17,26 +20,6 @@
     <!-- top part -->
     <!-- logo, name, settings -->
     <div class="container">
-      <div class="row">
-
-<!--         <div class="col-md-2 p-0">
-          <input
-            class="btn btn-danger btn-block"
-            type="button"
-            value="convert!"
-            onclick="input()"
-          />
-        </div> -->
-        <!-- settings -->
-      </div>
-    </div>
-
-    <!-- errors display -->
-    <div id="errors"></div>
-
-    <!-- Manual input -->
-    <div class="jumbotron screen">
-    <div class="container h-100">
       <div class="row">
         <div class="col-md-5">
           <div class="logo-box">
@@ -66,6 +49,22 @@
           </div>          
         </div>
       </div>
+
+<!--         <div class="col-md-2 p-0">
+          <input
+            class="btn btn-danger btn-block"
+            type="button"
+            value="convert!"
+            onclick="input()"
+          />
+        </div> -->
+        <!-- settings -->
+
+    </div>
+
+    <div class="jumbotron blackstrip">
+    <div class="container h-100">
+      <!-- input -->
       <div class="row input-row">
         <div class="col">
           <span class="box_header text-center">time</span>
@@ -103,6 +102,17 @@
           </div>          
         </div>
       </div>
+    </div>
+  </div>
+
+    <!-- errors display -->
+    <div id="errors"></div>
+
+    <!-- Manual input -->
+    <div class="jumbotron screen">
+    <div class="container">
+
+
       <!-- ouptut -->
       <div class="row output-row">
           <div class="col" style="padding-right: 0px; padding-left: 0px">
