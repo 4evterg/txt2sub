@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TEXT2SRT</title>
+    <title>TXT2SRT</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="content-language" content="ru" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <!-- Styles -->
     <link type="text/css" rel="stylesheet" href="css/reset.css" />
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
@@ -19,114 +19,99 @@
   <body>
     <!-- top part -->
     <!-- logo, name, settings -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-5">
-          <div class="logo-box">
-            <img src="images/logo.png" alt="" class="logo" />
-            <span class="logo-text">TXT2SRT</span>
-          </div>            
-        </div>
-        <div class="col flex-wrap">
-          <div class="card var_box">         
-            <div>
-              <span>delay:</span>
-              <input type="text" id="delay_box" value="20" />
-            </div>
-            <div>
-              <span>shift:</span>
-              <input
-                type="text"
-                id="shift_box"
-                placeholder="10 ms"
-                value="900"
-              />
-            </div>
-            <div>
-              <span>start:</span>
-              <input type="text" id="start_box" placeholder="1" value="1" />
-            </div>             
-          </div>          
-        </div>
-      </div>
+    <nav class="navbar navbar-expand-sm">
+      <a class="navbar-brand mr-auto" href="/index.html">
+        <img src="images/logo.png" alt="" class="logo" />
+        <span class="logo-text">TXT2SRT</span>
+      </a>
+      <ul class="nav navbar-nav">
+        <li class="nav-item">
+          <div>
+            <span>delay:</span>
+            <input type="text" id="delay_box" value="20" />
+          </div>
+        </li>
+        <li class="nav-item">
+          <div>
+            <span>shift:</span>
+            <input type="text" id="shift_box" placeholder="10 ms" value="900" />
+          </div>
+        </li>
+        <li class="nav-item">
+          <div>
+            <span>start:</span>
+            <input type="text" id="start_box" placeholder="1" value="1" />
+          </div>
+        </li>
+      </ul>
+    </nav>
 
-<!--         <div class="col-md-2 p-0">
-          <input
-            class="btn btn-danger btn-block"
-            type="button"
-            value="convert!"
-            onclick="input()"
-          />
-        </div> -->
-        <!-- settings -->
-
-    </div>
-
+    <!-- input -->
+    <!-- manual input -->
     <div class="jumbotron blackstrip">
-    <div class="container h-100">
-      <!-- input -->
-      <div class="row input-row">
-        <div class="col">
-          <span class="box_header text-center">time</span>
-          <div class="card">
-            
-            <textarea
-              name="timeline"
-              id="timeline_box"
-              placeholder="time goes here"                
-            ></textarea>
-            <span class="countRows">Strings</span>
+      <div class="container h-100">
+        <div class="row input-row">
+          <div class="col">
+            <span class="box_header text-center">time</span>
+            <div class="card">
+              <textarea
+                name="timeline"
+                id="timeline_box"
+                placeholder="time goes here"
+              ></textarea>
+              <span class="countRows">Strings</span>
+            </div>
+          </div>
+          <div class="col">
+            <span class="box_header text-center">names</span>
+            <div class="card">
+              <textarea
+                name="text"
+                id="names_box"
+                placeholder="names goes here"
+              ></textarea>
+              <span class="countRows">Strings</span>
+            </div>
+          </div>
+          <div class="col">
+            <span class="box_header text-center">text</span>
+            <div class="card">
+              <textarea id="text_box" placeholder="text goes here"></textarea>
+              <span class="countRows">Strings</span>
+            </div>
           </div>
         </div>
-        <div class="col">
-          <span class="box_header text-center">names</span>
-          <div class="card">
-            
-            <textarea
-              name="text"
-              id="names_box"
-              placeholder="names goes here"               
-            ></textarea>
-            <span class="countRows">Strings</span>
-          </div>          
-        </div>
-        <div class="col">
-          <span class="box_header text-center">text</span>
-          <div class="card">
-            
-            <textarea 
-              id="text_box" 
-              placeholder="text goes here"              
-              ></textarea>
-            <span class="countRows">Strings</span>
-          </div>          
+
+        <!-- settings and button var_box -->
+        <div
+          class="convert row justify-content-center"
+        >
+            <input
+              class="btn btn-danger btn-block"
+              type="button"
+              value="convert!"
+              onclick="input()"
+              style="width: 150px"
+            />
+
         </div>
       </div>
     </div>
-  </div>
 
     <!-- errors display -->
     <div id="errors"></div>
 
-    <!-- Manual input -->
-    <div class="jumbotron screen">
-    <div class="container">
-
-
+    <div class="container test">
       <!-- ouptut -->
       <div class="row output-row">
-          <div class="col" style="padding-right: 0px; padding-left: 0px">
-            <div class="card">
-              <span class="box_header text-center">result</span>
-              <textarea id="output_box"></textarea>
-            </div>
-          </div>        
+        <div class="col">
+          <div class="card">
+            <span class="box_header text-center">result</span>
+            <textarea id="output_box"></textarea>
+          </div>
+        </div>
       </div>
-    </div>      
     </div>
-
-
-
 
     <script src="js/common.js"></script>
   </body>

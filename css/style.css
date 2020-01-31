@@ -1,4 +1,5 @@
 html{
+  /* COLORS */
 	/* bg of page */
 	--page_bg: #f5eded;
 	/* border of cards and text in central row */
@@ -12,16 +13,18 @@ html{
 	/* Warning color of central strip */
 	--cs_warning: #faee1c;
 	/* central textarea placeholders text */
-	--cs_ta_ph: #6d5c5c;
-}
-title{
-	text-decoration-style: dashed;
+  --cs_ta_ph: #6d5c5c;
+  
+  /* Demensions */
+  /* main paddin value */
+  --pd_main: 20px;
 }
 
 /*main style*/
 body{
 	background-color: var(--page_bg);
-	height: 100vh;
+  height: 100vh;
+  min-width: 350px;
 }
 textarea{
 	min-height: 50px;
@@ -29,35 +32,24 @@ textarea{
 	height: 100%;
 	resize: none;
 	overflow-x: hidden;
-	background-color: unset;
+  background-color: unset;
+  border: none;
 }
-
-input{
-	border-width: 2px;
-	border-radius: 3px;
-	border-style: dashed;
-	border-color: #000;
-}
-
-textarea{
-/* border: none; */
-scrollbar-color: light;
-}
-
 textarea::placeholder{
 	color: var(--cs_ta_ph);
 }
 textarea:focus, input:focus{
 	outline-style: none; 
-	border-color: #dc3545;
+	border-color: var(--cs_error);
 }
-.screen{
-	/* height: 100vh; */
-	margin-bottom: 0;
-	background-color: unset;
-	position: relative;
-	padding: 0;
-}
+/* input{
+	border-width: 2px;
+	border-radius: 3px;
+	border-style: dashed;
+  border-color: #000;  
+} */
+
+
 .input-row, .output-row{
 	height: calc((100% - 120px)/2);
 }
@@ -81,8 +73,9 @@ textarea:focus, input:focus{
 
 
 /*TOP PART*/
-.logo-box{
-	margin-top: 10px;
+.navbar{
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .logo{
 	width: 60px;
@@ -91,9 +84,9 @@ textarea:focus, input:focus{
 .logo-text{
 	font-weight: bold;
 	font-size: 30px;
-	vertical-align: middle;
+	/* vertical-align: middle; */
 	color: #000;
-	text-decoration: underline dashed;
+  text-decoration: underline dashed;
 }
 .btn{
 	height: 60px;
@@ -102,34 +95,19 @@ textarea:focus, input:focus{
 	font-size: 160%;
 	padding: 0;
 }
-.var_box{
-	/*margin-left: 20px;*/
-/*	background-color: red;*/
-	height: 100%;
-	text-align: center;
-	display: inline-block;
-	margin-top: 10px;
-	margin-left: 10px;
-	margin-right: -20px;
-	margin-bottom: -10px;
-	/*z-index: -1;*/
+.nav-item div{
+  width: 10vw;
+  text-align: center;
 }
-.var_box div{
-	display: inline-block;
-	min-width: 50px;
-	width: 20%;
-	right: 0px;
-}
-.var_box input{
-	width: 100%;
-}
-.var_box div:not(first-child){
-	margin-left: 20px;
-	float: right;
-}
-.var_box span{
+.nav-item span{
 	width: 100%;	
 	font-weight: bold;
+}
+.nav-item input{
+  width: 100%;
+}
+.nav-item div:not(first-child){
+	margin-left: 20px;
 }
 
 /*MIDDLE PART*/
@@ -137,15 +115,16 @@ textarea:focus, input:focus{
 	background-color: var(--cs_defaultbg);
 	border-radius: 0px;
 	padding-top: 0px;
-	padding-bottom: 20px;
+	padding-bottom: var(--pd_main);
 	margin-bottom: 0px;
-	
+	height: calc((100% - 120px)/2);
 	box-shadow: inset 6px 6px 12px rgba(0, 0, 0, 1),
 							inset -6px -6px 12px rgba(255, 255, 255, 0.3);
 }
-.blackstrip div, .output div{
-	height: 100%;
+.blackstrip div{
+	height: calc(100% - var(--pd_main));
 }
+
 /*headers of textarea*/
 .box_header{
 	font-size: 20px;
@@ -158,36 +137,48 @@ textarea:focus, input:focus{
 	margin-top: 10px;
 }
 #errors{
-	color: red;
+	color: var(--cs_error);
 }
 
 .countRows{
 	color: #3e3636;
 	font-weight: bold;
 }
-.card{
-	border-radius: 10px;
+.blackstrip .card{
+  background-color: unset;
 	border: none;
 	/* box-shadow: 6px 6px 10px rgba(0, 0, 0, 1),
 				-6px -6px 12px rgba(255, 255, 255, 0.3); */
 	padding: 5px;
 	color: #000;
-	border: 2px dashed #000;
+	border: 2px dashed var(--cs_color);
+  border-radius: 10px;
 }
-.input-row .card{
+/* .input-row .card{
 	background-color: unset;
 	border-color: #3e3636;	
+} */
+
+.convert{
+  height: auto; 
+  margin-top: 10px;
+}
+.btn{
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 1),
+  -6px -6px 12px rgba(255, 255, 255, 0.2);
 }
 
 /*LOWER PART*/
-.output span{
-	color: #000;
+.test{
+  height: calc((100% - 120px)/2);
 }
-
-.input, .output{
-	
+.test textarea{
+  border: 1px solid green;
 }
-
-#output_box{
-	height: calc(100% - 60px);
+.output-row{
+  height: calc((100% - 120px)/2);
+  background-color: red;
+}
+.output-row .card {
+  height: calc((100% - 120px)/2);
 }
