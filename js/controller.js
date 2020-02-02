@@ -11,6 +11,9 @@ function input() {
 
   let output_box = document.getElementById("output_box");
 
+  //clear output from the previous time
+  Sub.srt = [];
+
   //caching values
   localStorage.setItem("timeline_box", timeline_box.value);
   localStorage.setItem("text_box", text_box.value);
@@ -55,6 +58,7 @@ function errors() {
       let errorMessage = document.createElement("span");
       errorMessage.innerHTML = "Time #" + (i + 1) + " is empty!" + "<br>";
       document.getElementById("errors").appendChild(errorMessage);
+      document.getElementById("blackstrip").style.backgroundColor = "#d72323";
     }
     //text
     if (Sub.text[i] == "") {
@@ -77,24 +81,44 @@ function errors() {
 // })()
 
 function countRows() {
-  let color = "red";
-  if (timeline_box.value.lineCount() == text_box.value.lineCount()) {
-    color = "green";
-  }
+  let strip_bg = document.getElementById("blackstrip");
+  let color = "green";
+
+  let text = text_box.value.lineCount();
+  let time = timeline_box.value.lineCount();
+  let names = names_box.value.lineCount();
+
   let spans = document.querySelectorAll(".countRows");
-  rowsOf = [
-    timeline_box.value.lineCount(),
-    names_box.value.lineCount(),
-    text_box.value.lineCount()
-  ];
+  rowsOf = [time, names, text];
+
+  strip_bg.style.backgroundColor = "#0b8457";
+
+  if (time != text) {
+    color = "red";
+    strip_bg.style.backgroundColor = "#d72323";
+  } else if (names != time || names != text) {
+    spans[1].style.color = "red";
+    strip_bg.style.backgroundColor = "#faee1c";
+  }
   for (let i = 0; i < spans.length; i++) {
     spans[i].innerHTML = rowsOf[i];
     spans[i].style.color = color;
   }
-  if (
-    names_box.value.lineCount() != timeline_box.value.lineCount() ||
-    names_box.value.lineCount() != text_box.value.lineCount()
-  ) {
-    document.querySelector(".countNames").style.color = "red";
+}
+
+function messages(type, place) {
+  let color;
+  switch (type) {
+    case "e": // error
+      color = "#d72323";
+      break;
+    case "w": // warning
+      color = "#faee1c";
+      break;
+    default:
+      color = "#0b8457";
+      break;
   }
+  let element = document.getElementById(place);
+  element.className += " " + 
 }

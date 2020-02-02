@@ -48,31 +48,28 @@
 
     <!-- input -->
     <!-- manual input -->
-    <div class="jumbotron blackstrip">
+    <div class="jumbotron" id="blackstrip">
       <div class="container h-100">
-        <div class="row input-row">
+        <div class="row">
           <div class="col">
             <span class="box_header text-center">time</span>
             <div class="card">
               <textarea
-                name="timeline"
                 id="timeline_box"
                 placeholder="time goes here"
               ></textarea>
               <span class="countRows">Strings</span>
             </div>
           </div>
+
           <div class="col">
             <span class="box_header text-center">names</span>
             <div class="card">
-              <textarea
-                name="text"
-                id="names_box"
-                placeholder="names goes here"
-              ></textarea>
+              <textarea id="names_box" placeholder="names goes here"></textarea>
               <span class="countRows">Strings</span>
             </div>
           </div>
+
           <div class="col">
             <span class="box_header text-center">text</span>
             <div class="card">
@@ -82,7 +79,6 @@
           </div>
         </div>
 
-        <!-- settings and button var_box -->
         <div class="convert row justify-content-center">
           <input
             class="btn btn-danger btn-block"
@@ -112,3 +108,23 @@
     <script src="js/common.js"></script>
   </body>
 </html>
+
+<!-- {
+    "workbench.iconTheme": "vscode-icons",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "git.autofetch": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.tabSize": 2,
+    // "editor.renderWhitespace": "boundary",
+    // "editor.renderIndentGuides": true
+    "editor.minimap.scale": 1,
+    "editor.minimap.renderCharacters": false,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.fontSize": 15,
+    "editor.fontFamily": "Fira Code", 
+    "editor.fontLigatures": true,
+    "workbench.editor.highlightModifiedTabs": true,
+    "explorer.sortOrder": "modified",
+    "files.trimFinalNewlines": true,
+} -->

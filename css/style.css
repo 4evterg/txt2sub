@@ -15,7 +15,7 @@ html {
   /* central textarea placeholders text */
   --cs_ta_ph: #6d5c5c;
 
-  /* Demensions */
+  /* DEMENSIONS */
   /* main paddin value */
   --pd_main: 20px;
 }
@@ -41,21 +41,6 @@ textarea::placeholder {
 textarea:focus,
 input:focus {
   outline-style: none;
-  border-color: var(--cs_error);
-}
-
-.input-row {
-  height: calc((100% - 120px) / 2);
-}
-
-.input-row div {
-  height: calc(100% - 30px);
-}
-
-.input-row {
-  color: #3e3636;
-  padding-bottom: 10px;
-  border-radius: 10px;
 }
 
 /*TOP PART*/
@@ -64,7 +49,6 @@ input:focus {
   padding-bottom: 0;
 }
 .logo {
-  width: 60px;
   height: 60px;
 }
 .logo-text {
@@ -74,19 +58,11 @@ input:focus {
   color: #000;
   text-decoration: underline dashed;
 }
-.btn {
-  height: 60px;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 160%;
-  padding: 0;
-}
 .nav-item div {
   width: 10vw;
   text-align: center;
 }
 .nav-item span {
-  width: 100%;
   font-weight: bold;
 }
 .nav-item input {
@@ -97,7 +73,7 @@ input:focus {
 }
 
 /*MIDDLE PART*/
-.blackstrip {
+#blackstrip {
   background-color: var(--cs_defaultbg);
   border-radius: 0px;
   padding-top: 0px;
@@ -107,10 +83,17 @@ input:focus {
   box-shadow: inset 6px 6px 12px rgba(0, 0, 0, 1),
     inset -6px -6px 12px rgba(255, 255, 255, 0.3);
 }
-.blackstrip div {
+#blackstrip div {
   height: calc(100% - var(--pd_main));
 }
-
+#blackstrip .card {
+  background-color: unset;
+  border: none;
+  padding: 5px;
+  color: #000;
+  border: 2px dashed var(--cs_color);
+  border-radius: 10px;
+}
 /*headers of textarea*/
 .box_header {
   font-size: 20px;
@@ -121,33 +104,24 @@ input:focus {
   padding-bottom: 10px;
   margin-top: 10px;
 }
-#errors {
-  color: var(--cs_error);
-}
-
 .countRows {
   color: #3e3636;
   font-weight: bold;
 }
-.blackstrip .card {
-  background-color: unset;
-  border: none;
-  padding: 5px;
-  color: #000;
-  border: 2px dashed var(--cs_color);
-  border-radius: 10px;
-}
-
 .convert {
   height: auto;
-	margin-top: 10px;
-	
+  margin-top: 10px;
 }
 .btn {
-	width: 150px !important;
+  height: 60px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 160%;
+  padding: 0;
+  width: 150px !important;
   box-shadow: 6px 6px 10px rgba(0, 0, 0, 1),
-		-6px -6px 12px rgba(255, 255, 255, 0.2);
-		z-index: 9999;
+    -6px -6px 12px rgba(255, 255, 255, 0.2);
+  z-index: 9999;
 }
 
 /*LOWER PART*/
@@ -164,4 +138,8 @@ input:focus {
   padding-right: var(--pd_main);
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 1),
     -6px -6px 10px rgba(255, 255, 255, 0.2);
+}
+
+#errors {
+  color: var(--cs_error);
 }
