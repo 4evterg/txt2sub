@@ -32,58 +32,39 @@ function input() {
   Sub.shift = +shift_box.value;
   Sub.start = +start_box.value;
 
+  //clear up error messages
+  new messages().clear();
+
   //check for input errors & remove them if possibe
-  //errors(timeline, text);
   errors();
   countRows();
   addNames();
   convert();
-  //output results
-  // let output_arr = convert(timeline, text, delay, shift, start);
 
+  //output results
   output_box.value = Sub.srt.join("\n");
 }
 
-// function output(clear_arr){
-// 	let output_box = document.getElementById("output_box");
-// 	//let srt = "";
-// 	output_box.value = clear_arr.join("\n");
-// }
-
 function errors() {
   //check if string is blank
+  let error;
   for (let i = 0; i < Sub.timeline.length; i++) {
     //timeline
     if (Sub.timeline[i] == "") {
-      let errorMessage = document.createElement("span");
-      errorMessage.innerHTML = "Time #" + (i + 1) + " is empty!" + "<br>";
-      document.getElementById("errors").appendChild(errorMessage);
-      document.getElementById("blackstrip").style.backgroundColor = "#d72323";
+      error = "Time #" + (i + 1) + " is empty!";
+      messages("e", error);
     }
     //text
     if (Sub.text[i] == "") {
-      let errorMessage = document.createElement("span");
-      errorMessage.innerHTML = "Text #" + (i + 1) + " is empty!" + "<br>";
-      document.getElementById("errors").appendChild(errorMessage);
+      error = "Text #" + (i + 1) + " is empty!";
+      messages("e", error);
     }
     //remove accidental spaces from timeline
     Sub.timeline[i] = Sub.timeline[i].replace(/\s+/g, "");
   }
-  // return timeline;
 }
 
-// (() => {
-//   let textareas = document.querySelectorAll("textarea");
-//   for(let i = 0; i < textareas.length; i++){
-//     textareas[i].onchange = countRows();
-//     textareas[i].value = "hello";
-//   }
-// })()
-
 function countRows() {
-  let strip_bg = document.getElementById("blackstrip");
-  let color = "green";
-
   let text = text_box.value.lineCount();
   let time = timeline_box.value.lineCount();
   let names = names_box.value.lineCount();
@@ -91,34 +72,41 @@ function countRows() {
   let spans = document.querySelectorAll(".countRows");
   rowsOf = [time, names, text];
 
-  strip_bg.style.backgroundColor = "#0b8457";
-
   if (time != text) {
-    color = "red";
-    strip_bg.style.backgroundColor = "#d72323";
+    messages("e", "number of timeline and text strings doesn't match");
   } else if (names != time || names != text) {
-    spans[1].style.color = "red";
-    strip_bg.style.backgroundColor = "#faee1c";
+    messages("w", "number of names strings doesn't match");
   }
   for (let i = 0; i < spans.length; i++) {
     spans[i].innerHTML = rowsOf[i];
-    spans[i].style.color = color;
   }
 }
 
-function messages(type, place) {
+function messages(type, message) {
   let color;
   switch (type) {
     case "e": // error
-      color = "#d72323";
+      color = "var(--error)";
       break;
     case "w": // warning
-      color = "#faee1c";
+      color = "var(--warning)";
       break;
     default:
-      color = "#0b8457";
+      // ok
+      color = "var(--ok)";
       break;
   }
-  let element = document.getElementById(place);
-  element.className += " " + 
+  let indicator = document.getElementById("blackstrip");
+  indicator.style.backgroundColor = color;
+
+  if (type == "e") {
+    let errorMessage = document.createElement("span");
+    errorMessage.innerHTML += message + "<br>";
+    document.getElementById("errors").appendChild(errorMessage);
+  }
+
+  //reset from the previous check
+  this.clear = () => {
+    document.getElementById("errors").innerHTML = "";
+  };
 }

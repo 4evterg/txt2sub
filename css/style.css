@@ -6,18 +6,20 @@ html {
   --cs_color: #3e3636;
   /* default bg of central strip */
   --cs_defaultbg: #62929a;
-  /* error color of central strip */
-  --cs_error: #d72323;
-  /* OK color of central strip */
-  --cs_ok: #0b8457;
-  /* Warning color of central strip */
-  --cs_warning: #faee1c;
   /* central textarea placeholders text */
   --cs_ta_ph: #6d5c5c;
 
   /* DEMENSIONS */
   /* main paddin value */
   --pd_main: 20px;
+
+  /* ERRORS */
+  /* error color of central strip */
+  --error: #d72323;
+  /* OK color of central strip */
+  --ok: #0b8457;
+  /* Warning color of central strip */
+  --warning: #ffd105;
 }
 
 /*main style*/
@@ -112,6 +114,8 @@ input:focus {
   height: auto;
   margin-top: 10px;
 }
+
+/*LOWER PART*/
 .btn {
   height: 60px;
   text-transform: uppercase;
@@ -123,8 +127,6 @@ input:focus {
     -6px -6px 12px rgba(255, 255, 255, 0.2);
   z-index: 9999;
 }
-
-/*LOWER PART*/
 .output-con {
   height: calc((100% - 120px) / 2);
   margin-top: 20px;
@@ -140,6 +142,12 @@ input:focus {
     -6px -6px 10px rgba(255, 255, 255, 0.2);
 }
 
+/* displaying errors */
 #errors {
-  color: var(--cs_error);
+  color: var(--error);
+  padding-left: 10px;
+  padding-top: 10px;
+}
+#errors span {
+  font-weight: bold;
 }

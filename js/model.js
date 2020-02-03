@@ -121,7 +121,6 @@ function toMiliSec(timeline) {
     //computing miliseconds
     mili_s[t] = (minutes[t] * 60 + seconds[t]) * 1000;
   }
-  deleteMe();
   return mili_s;
 }
 
@@ -138,7 +137,6 @@ function msToTime(s) {
   s = (s - secs) / 60;
   let mins = s % 60;
   let hrs = (s - mins) / 60;
-  deleteMe();
   return pad(hrs) + ":" + pad(mins) + ":" + pad(secs) + "," + pad(ms, 3);
 }
 
