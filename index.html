@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TXT2SRT</title>
+    <title>DOC2SUB</title>
+    <base href="/index.html" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="simple 'script to subtittle' convertor" />
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="content-language" content="ru" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
@@ -14,6 +17,7 @@
     <link type="text/css" rel="stylesheet" href="css/reset.css" />
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
     <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link type="text/css" rel="stylesheet" href="css/media.css" />
   </head>
 
   <body>
@@ -22,10 +26,19 @@
     <nav class="navbar navbar-expand-sm">
       <a class="navbar-brand mr-auto" href="/index.html">
         <img src="images/logo.png" alt="" class="logo" />
-        <span class="logo-text">TXT2SRT</span>
+        <span class="logo-text">DOC2SUB</span>
       </a>
       <ul class="nav navbar-nav">
-        <li class="nav-item">
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#exampleModal"
+        >
+          SETTINGS
+        </button>
+        <!-- <li class="nav-item">
           <div>
             <span>delay:</span>
             <input type="text" id="delay_box" value="20" />
@@ -42,16 +55,56 @@
             <span>start:</span>
             <input type="text" id="start_box" placeholder="1" value="1" />
           </div>
-        </li>
+        </li> -->
+        <!-- Button trigger modal -->
       </ul>
     </nav>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- input -->
     <!-- manual input -->
     <div class="jumbotron" id="blackstrip">
       <div class="container h-100">
         <div class="row">
-          <div class="col">
+          <div class="col-md-4">
             <span class="box_header text-center">time</span>
             <div class="card">
               <textarea
@@ -62,7 +115,7 @@
             </div>
           </div>
 
-          <div class="col">
+          <div class="col-md-4">
             <span class="box_header text-center">names</span>
             <div class="card">
               <textarea id="names_box" placeholder="names goes here"></textarea>
@@ -70,7 +123,7 @@
             </div>
           </div>
 
-          <div class="col">
+          <div class="col-md-4">
             <span class="box_header text-center">text</span>
             <div class="card">
               <textarea id="text_box" placeholder="text goes here"></textarea>
@@ -105,6 +158,8 @@
       </div>
     </div>
 
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/common.js"></script>
   </body>
 </html>

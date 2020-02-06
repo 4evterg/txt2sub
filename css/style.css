@@ -74,6 +74,10 @@ input:focus {
   margin-left: 20px;
 }
 
+.modal-open {
+  padding-right: 0px !important;
+}
+
 /*MIDDLE PART*/
 #blackstrip {
   background-color: var(--cs_defaultbg);
@@ -125,7 +129,7 @@ input:focus {
   width: 150px !important;
   box-shadow: 6px 6px 10px rgba(0, 0, 0, 1),
     -6px -6px 12px rgba(255, 255, 255, 0.2);
-  z-index: 9999;
+  z-index: 10;
 }
 .output-con {
   height: calc((100% - 120px) / 2);

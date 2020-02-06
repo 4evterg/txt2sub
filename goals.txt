@@ -1,0 +1,21 @@
+- 37 symbols 
+- add "names" checkbox, hide names if not checked 
+- save settings in cookie 
+- if time is empty - show in () what time was before
+- if text is empty - same deal
+- try to calc time if it's empty (mb add button - calc)
+- if text is empty - same deal
+- 2 rows
+- unite 2 short scentences 
+- remove names if united
+- symbols to time ratio
+- crop and center low symbols/time strings
+- srt and ass (besides convert button)
+- upload .doc
+- download .srt .ass
+- refactor
+- timecodes in text
+- delete ^p (/n) in .doc text coloumn
+- big chunks
+- copy in buffer on textarea click (or mb better on conver click)
+- settings on popup

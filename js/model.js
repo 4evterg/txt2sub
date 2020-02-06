@@ -142,8 +142,9 @@ function msToTime(s) {
 
 function addNames() {
   for (i = 0; i < Sub.names.length; i++) {
-    if (Sub.names[i] == "Диктор") {
-      Sub.text[i] = "(Диктор) " + Sub.text[i];
-    }
+    //if (Sub.names[i] == "Диктор") {
+    // .replace() to remove accdient spaces
+    Sub.text[i] = "(" + Sub.names[i].replace(/\s+/g, "") + ") " + Sub.text[i];
+    //}
   }
 }
