@@ -29,15 +29,6 @@
         <span class="logo-text">DOC2SUB</span>
       </a>
       <ul class="nav navbar-nav">
-        <!-- Button trigger modal -->
-        <button
-          type="button"
-          class="btn btn-primary"
-          data-toggle="modal"
-          data-target="#exampleModal"
-        >
-          SETTINGS
-        </button>
         <!-- <li class="nav-item">
           <div>
             <span>delay:</span>
@@ -56,44 +47,49 @@
             <input type="text" id="start_box" placeholder="1" value="1" />
           </div>
         </li> -->
-        <!-- Button trigger modal -->
+        <!-- Trigger/Open sModal -->
+        <button class="btn btn-danger" id="sModalBtn">Settings</button>
       </ul>
     </nav>
 
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
+    <!-- sModal background blur -->
+    <div id="sModal" class="sModal"></div>
+
+    <!-- sModal panel -->
+    <div id="sm-content" class="sModal-content">
+      <div class="container">
+        <div class="row sModal-header">
+          <div class="col">
+            <span>Settings</span>
+            <span class="sModal-close">&times;</span>
           </div>
-          <div class="modal-body">
-            ...
+          <!-- <div class="col-1 my-auto">
+            <span class="sModal-close">&times;</span>
+          </div> -->
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div>
+              <span>delay:</span>
+              <input type="text" id="delay_box" value="20" />
+            </div>
           </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+          <div class="col-md-4">
+            <div>
+              <span>shift:</span>
+              <input
+                type="text"
+                id="shift_box"
+                placeholder="10 ms"
+                value="900"
+              />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div>
+              <span>start:</span>
+              <input type="text" id="start_box" placeholder="1" value="1" />
+            </div>
           </div>
         </div>
       </div>
@@ -134,7 +130,7 @@
 
         <div class="convert row justify-content-center">
           <input
-            class="btn btn-danger btn-block"
+            class="btn btn-danger convert-btn"
             type="button"
             value="convert!"
             onclick="input()"
@@ -158,9 +154,8 @@
       </div>
     </div>
 
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
     <script src="js/common.js"></script>
+    <script src="js/modal.js"></script>
   </body>
 </html>
 

@@ -18,4 +18,3 @@
 - delete ^p (/n) in .doc text coloumn
 - big chunks
 - copy in buffer on textarea click (or mb better on conver click)
-- settings on popup

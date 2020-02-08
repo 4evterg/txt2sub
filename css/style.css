@@ -45,6 +45,81 @@ input:focus {
   outline-style: none;
 }
 
+/* The sModal */
+.sModal {
+  position: fixed; /* Stay in place */
+  z-index: 990; /* Sit on top, but behind panels*/
+  left: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  top: -100%;
+  opacity: 0;
+  transition: opacity 1s;
+}
+.sModal.show {
+  top: 0;
+  opacity: 1;
+}
+.sModal-content {
+  position: absolute;
+  z-index: 991;
+  top: -100%;
+  left: 15%;
+  background-color: var(--page_bg);
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 70%; /* Could be more or less, depending on screen size */
+  transition: top 0.3s;
+}
+.sModal-content.show {
+  top: 0;
+}
+.sModal-header {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.sModal-header span:not(.sModal-close) {
+  color: #dc3545;
+  margin-left: 20px;
+}
+.sModal-close {
+  color: #aaa;
+  float: right;
+  /* font-size: 20px; */
+  font-weight: bold;
+  margin-top: -3px;
+}
+.sModal-close:hover,
+.sModal-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#sModalBtn {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* settings popup */
+.sModal-content div {
+  /* width: 10vw; */
+  text-align: center;
+}
+.sModal-content span {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.sModal-content input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
 /*TOP PART*/
 .navbar {
   padding-top: 0;
@@ -56,26 +131,8 @@ input:focus {
 .logo-text {
   font-weight: bold;
   font-size: 30px;
-  /* vertical-align: middle; */
   color: #000;
   text-decoration: underline dashed;
-}
-.nav-item div {
-  width: 10vw;
-  text-align: center;
-}
-.nav-item span {
-  font-weight: bold;
-}
-.nav-item input {
-  width: 100%;
-}
-.nav-item div:not(first-child) {
-  margin-left: 20px;
-}
-
-.modal-open {
-  padding-right: 0px !important;
 }
 
 /*MIDDLE PART*/
@@ -120,7 +177,7 @@ input:focus {
 }
 
 /*LOWER PART*/
-.btn {
+.convert-btn {
   height: 60px;
   text-transform: uppercase;
   font-weight: bold;
@@ -154,4 +211,28 @@ input:focus {
 }
 #errors span {
   font-weight: bold;
+}
+
+@keyframes fadeout {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+
+  to {
+    top: 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    top: 0px;
+    opacity: 1;
+  }
+
+  to {
+    top: -300px;
+    opacity: 0;
+  }
 }

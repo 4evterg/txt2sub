@@ -30,7 +30,7 @@ function input() {
 
   Sub.delay = +delay_box.value;
   Sub.shift = +shift_box.value;
-  Sub.start = +start_box.value;
+  Sub.startsFrom = +start_box.value;
 
   //clear up error messages
   new messages().clear();
