@@ -15,13 +15,13 @@ function input() {
   Sub.srt = [];
 
   //caching values
-  localStorage.setItem("timeline_box", timeline_box.value);
-  localStorage.setItem("text_box", text_box.value);
-  localStorage.setItem("names_box", names_box.value);
+  sCache.save("timeline_box", timeline_box.value);
+  sCache.save("text_box", text_box.value);
+  sCache.save("names_box", names_box.value);
 
-  localStorage.setItem("delay_box", delay_box.value);
-  localStorage.setItem("shift_box", shift_box.value);
-  localStorage.setItem("start_box", start_box.value);
+  sCache.save("delay_box", delay_box.value);
+  sCache.save("shift_box", shift_box.value);
+  sCache.save("start_box", start_box.value);
 
   //initiate letiables
   if (timeline_box.value != "") Sub.timeline = timeline_box.value.split("\n");
@@ -52,12 +52,12 @@ function errors() {
     //timeline
     if (Sub.timeline[i] == "") {
       error = "Time #" + (i + 1) + " is empty!";
-      messages("e", error);
+      messages(error, "e");
     }
     //text
     if (Sub.text[i] == "") {
       error = "Text #" + (i + 1) + " is empty!";
-      messages("e", error);
+      messages(error, "e");
     }
     //remove accidental spaces from timeline
     Sub.timeline[i] = Sub.timeline[i].replace(/\s+/g, "");
@@ -73,40 +73,11 @@ function countRows() {
   rowsOf = [time, names, text];
 
   if (time != text) {
-    messages("e", "number of timeline and text strings doesn't match");
+    messages("number of timeline and text strings doesn't match", "e");
   } else if (names != time || names != text) {
-    messages("w", "number of names strings doesn't match");
+    messages("number of names strings doesn't match", "w");
   }
   for (let i = 0; i < spans.length; i++) {
     spans[i].innerHTML = rowsOf[i];
   }
-}
-
-function messages(type, message) {
-  let color;
-  switch (type) {
-    case "e": // error
-      color = "var(--error)";
-      break;
-    case "w": // warning
-      color = "var(--warning)";
-      break;
-    default:
-      // ok
-      color = "var(--ok)";
-      break;
-  }
-  let indicator = document.getElementById("blackstrip");
-  indicator.style.backgroundColor = color;
-
-  if (type == "e") {
-    let errorMessage = document.createElement("span");
-    errorMessage.innerHTML += message + "<br>";
-    document.getElementById("errors").appendChild(errorMessage);
-  }
-
-  //reset from the previous check
-  this.clear = () => {
-    document.getElementById("errors").innerHTML = "";
-  };
 }
