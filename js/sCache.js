@@ -8,8 +8,9 @@ let sCache = {
   check: function() {
     for (let i = 0; i < localStorage.length; i++) {
       let key = localStorage.key(i);
-      document.getElementById(key).value = localStorage.getItem(key);
-      console.log(key);
+      if (key != "sLog_recent") {
+        document.getElementById(key).value = localStorage.getItem(key);
+      }
     }
   }
 };
