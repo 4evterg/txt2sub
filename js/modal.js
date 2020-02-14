@@ -1,3 +1,4 @@
+// -------------sModal-------------
 // Get the modal
 var modal = document.getElementById("sModal");
 var sm_content = document.getElementById("sm-content");
@@ -11,7 +12,6 @@ var span = document.getElementsByClassName("sModal-close")[0];
 btn.onclick = function() {
   modal.classList.add("show");
   sm_content.classList.add("show");
-  
 };
 
 // When the user clicks on <span> (x), close the modal
@@ -27,3 +27,15 @@ window.onclick = function(event) {
     sm_content.classList.remove("show");
   }
 };
+
+// -------------sToast-------------
+function sToast(message) {
+  var toast = document.getElementById("sToast");
+  //reset from previous usage
+  toast.innerHTML = "";
+  toast.innerHTML = message;
+  toast.classList.add("show");
+  setTimeout(function() {
+    toast.className = toast.className.replace("show", "");
+  }, 2000);
+}

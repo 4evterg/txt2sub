@@ -115,14 +115,14 @@ input:focus {
   height: auto;
   margin-top: 10px;
 }
-#names_col{
-	display: none;
-	/*opacity: 0;*/
-	/*transition: opacity 1s, display 1s;*/
+#names_col {
+  display: none;
+  /*opacity: 0;*/
+  /*transition: opacity 1s, display 1s;*/
 }
-#names_col.show{
-	display: block;
-	/*opacity: 1;*/
+#names_col.show {
+  display: block;
+  /*opacity: 1;*/
 }
 
 /*LOWER PART*/
@@ -160,28 +160,4 @@ input:focus {
 }
 #errors span {
   font-weight: bold;
-}
-
-@keyframes fadeout {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-
-  to {
-    top: 0px;
-    opacity: 1;
-  }
-}
-
-@keyframes fadein {
-  from {
-    top: 0px;
-    opacity: 1;
-  }
-
-  to {
-    top: -300px;
-    opacity: 0;
-  }
 }

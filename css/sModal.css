@@ -1,4 +1,4 @@
-/* The sModal */
+/* -------------The sModal------------- */
 .sModal {
   position: fixed; /* Stay in place */
   z-index: 990; /* Sit on top, but behind panels*/
@@ -58,4 +58,27 @@
   font-weight: bold;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 1),
     -5px -5px 12px rgba(255, 255, 255, 0.2);
+}
+
+/* -------------The sToast------------- */
+#sToast {
+  position: fixed;
+  z-index: 999;
+  left: 15%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 70%; /* Could be more or less, depending on screen size */
+  bottom: -100%;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 1),
+    -2px -2px 8px rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  transition: bottom 0.4s, opacity 0.4s;
+  border: 0px;
+}
+#sToast.show {
+  opacity: 1;
+  bottom: 30px;
 }
