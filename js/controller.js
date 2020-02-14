@@ -52,11 +52,13 @@ function errors() {
     //timeline
     if (Sub.timeline[i] == "") {
       error = "Time #" + (i + 1) + " is empty!";
+      error += " </br>        (After: " + Sub.timeline[i-1] + ")"
       messages(error, "e");
     }
     //text
     if (Sub.text[i] == "") {
       error = "Text #" + (i + 1) + " is empty!";
+      error += " </br> (After: " + Sub.text[i-1] + ")"
       messages(error, "e");
     }
     //remove accidental spaces from timeline

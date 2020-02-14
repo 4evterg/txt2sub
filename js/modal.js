@@ -11,6 +11,7 @@ var span = document.getElementsByClassName("sModal-close")[0];
 btn.onclick = function() {
   modal.classList.add("show");
   sm_content.classList.add("show");
+  
 };
 
 // When the user clicks on <span> (x), close the modal

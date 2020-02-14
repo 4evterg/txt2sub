@@ -45,65 +45,6 @@ input:focus {
   outline-style: none;
 }
 
-/* The sModal */
-.sModal {
-  position: fixed; /* Stay in place */
-  z-index: 990; /* Sit on top, but behind panels*/
-  left: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-  top: -100%;
-  opacity: 0;
-  transition: opacity 1s;
-}
-.sModal.show {
-  top: 0;
-  opacity: 1;
-}
-.sModal-content {
-  position: absolute;
-  z-index: 991;
-  top: -100%;
-  left: 15%;
-  background-color: var(--page_bg);
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 70%; /* Could be more or less, depending on screen size */
-  transition: top 0.3s;
-}
-.sModal-content.show {
-  top: 0;
-}
-.sModal-header {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-.sModal-header span:not(.sModal-close) {
-  color: #dc3545;
-  margin-left: 20px;
-}
-.sModal-close {
-  color: #aaa;
-  float: right;
-  font-weight: bold;
-  margin-top: -3px;
-}
-.sModal-close:hover,
-.sModal-close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-#sModalBtn {
-  font-size: 20px;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
 /* settings popup */
 .sModal-content div {
   /* width: 10vw; */
@@ -173,6 +114,15 @@ input:focus {
 .convert {
   height: auto;
   margin-top: 10px;
+}
+#names_col{
+	display: none;
+	/*opacity: 0;*/
+	/*transition: opacity 1s, display 1s;*/
+}
+#names_col.show{
+	display: block;
+	/*opacity: 1;*/
 }
 
 /*LOWER PART*/

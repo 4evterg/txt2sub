@@ -16,6 +16,7 @@
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
     <link type="text/css" rel="stylesheet" href="css/style.css" />
     <link type="text/css" rel="stylesheet" href="css/media.css" />
+    <link type="text/css" rel="stylesheet" href="css/sModal.css" />
 
     <script src="js/model.js"></script>
     <script src="js/messages.js"></script>
@@ -39,6 +40,7 @@
     <div id="sModal" class="sModal"></div>
 
     <!-- sModal panel -->
+    <!-- AKA settings -->
     <div id="sm-content" class="sModal-content">
       <div class="container">
         <div class="row sModal-header">
@@ -72,6 +74,14 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col">
+            <div>
+              <span>names</span>
+              <input type="checkbox" name="names_cb" id="names_cb" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -80,7 +90,7 @@
     <div class="jumbotron" id="blackstrip">
       <div class="container h-100">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md">
             <span class="box_header text-center">time</span>
             <div class="card">
               <textarea
@@ -91,7 +101,7 @@
             </div>
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md" id="names_col">
             <span class="box_header text-center">names</span>
             <div class="card">
               <textarea id="names_box" placeholder="names goes here"></textarea>
@@ -99,7 +109,7 @@
             </div>
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md">
             <span class="box_header text-center">text</span>
             <div class="card">
               <textarea id="text_box" placeholder="text goes here"></textarea>
@@ -128,7 +138,7 @@
         <div class="col">
           <div class="card">
             <span class="box_header text-center">result</span>
-            <textarea id="output_box"></textarea>
+            <textarea id="output_box" readonly></textarea>
           </div>
         </div>
       </div>
@@ -137,5 +147,6 @@
     <script src="js/sCache.js"></script>
     <script src="js/controller.js"></script>
     <script src="js/modal.js"></script>
+    <script src="js/common.js"></script>
   </body>
 </html>
