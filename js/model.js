@@ -1,15 +1,7 @@
-//using those to count lines in textarea
-String.prototype.lines = function() {
-  return this.split(/\r*\n/);
-};
-String.prototype.lineCount = function() {
-  return this.lines().length;
-};
-
 const deleteMe = () => console.trace("Alloha");
 
 //main object
-let Sub = {
+const Sub = {
   timeline: ["00:01", "00:02"],
   text: ["You must input some data", "otherwise this app makes no sense"],
   names: [],
@@ -138,13 +130,4 @@ function msToTime(s) {
   let mins = s % 60;
   let hrs = (s - mins) / 60;
   return pad(hrs) + ":" + pad(mins) + ":" + pad(secs) + "," + pad(ms, 3);
-}
-
-function addNames() {
-  for (i = 0; i < Sub.names.length; i++) {
-    //if (Sub.names[i] == "Диктор") {
-    // .replace() to remove accdient spaces
-    Sub.text[i] = "(" + Sub.names[i].replace(/\s+/g, "") + ") " + Sub.text[i];
-    //}
-  }
 }

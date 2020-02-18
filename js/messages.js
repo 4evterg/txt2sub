@@ -31,7 +31,7 @@ function messages(message, type) {
 }
 
 function sLog(message, type) {
-  let style = "";
+  let style = "background-color: ";
 
   // where call is take place
   // if in html than value = null, so we change it to "html",
@@ -41,6 +41,19 @@ function sLog(message, type) {
   if (recent == "null") {
     recent = "html";
   }
+
+  // Just a little neat quirk
+  // generate diferent backgrounds for diferent callers
+  let bgc = "rgb(";
+  bgc += caller.charCodeAt(0) * (caller.charCodeAt(2) % 2) + caller.length;
+  bgc += ",";
+  bgc += caller.charCodeAt(1) * (caller.charCodeAt(1) % 2) + caller.length * 10;
+  bgc += ",";
+  bgc += caller.charCodeAt(2) * (caller.charCodeAt(0) % 2) + caller.length * 20;
+  bgc += ");";
+
+  style += bgc;
+  style += "color: #fff;";
 
   switch (type) {
     case "e": // error
@@ -71,16 +84,19 @@ function sLog(message, type) {
 
   if (caller != recent) {
     console.log(
-      "%c ------- " + caller + "() -------",
-      "color: white; font-weight: bold; background-color: black"
+      "%c ------- " + caller + "() ------- ",
+      style + "font-weight: bold;"
     );
   }
 
   // table style log or simple
   if (!this.table) {
-    console.log(message);
+    // console.log(message);
+    console.log("%c" + message, style);
+    console.log(style);
   } else {
     let table_arr = {};
+
     for (let i = 0; i < message.length; i++) {
       const obj = message[i];
       const key = Object.keys(obj)[0];

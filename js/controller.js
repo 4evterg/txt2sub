@@ -1,15 +1,23 @@
+//using those to count lines in textarea
+String.prototype.lines = function() {
+  return this.split(/\r*\n/);
+};
+String.prototype.lineCount = function() {
+  return this.lines().length;
+};
+
 function input() {
   // text inputs
-  let timeline_box = document.getElementById("timeline_box");
-  let text_box = document.getElementById("text_box");
-  let names_box = document.getElementById("names_box");
+  const timeline_box = document.getElementById("timeline_box");
+  const text_box = document.getElementById("text_box");
+  const names_box = document.getElementById("names_box");
 
   //settings
-  let delay_box = document.getElementById("delay_box");
-  let shift_box = document.getElementById("shift_box");
-  let start_box = document.getElementById("start_box");
+  const delay_box = document.getElementById("delay_box");
+  const shift_box = document.getElementById("shift_box");
+  const start_box = document.getElementById("start_box");
 
-  let output_box = document.getElementById("output_box");
+  const output_box = document.getElementById("output_box");
 
   //clear output from the previous time
   Sub.srt = [];
@@ -26,11 +34,19 @@ function input() {
   //initiate letiables
   if (timeline_box.value != "") Sub.timeline = timeline_box.value.split("\n");
   if (text_box.value != "") Sub.text = text_box.value.split("\n");
-  if (names_box.value != "") Sub.names = names_box.value.split("\n");
+
+  if (document.getElementById("names_cb").checked) {
+    if (names_box.value != "") {
+      Sub.names = names_box.value.split("\n");
+      addNames();
+    }
+  }
 
   Sub.delay = +delay_box.value;
   Sub.shift = +shift_box.value;
   Sub.startsFrom = +start_box.value;
+
+  logInput();
 
   //clear up error messages
   new messages().clear();
@@ -38,7 +54,6 @@ function input() {
   //check for input errors & remove them if possibe
   errors();
   countRows();
-  addNames();
   convert();
 
   //output results
@@ -52,13 +67,13 @@ function errors() {
     //timeline
     if (Sub.timeline[i] == "") {
       error = "Time #" + (i + 1) + " is empty!";
-      error += " </br>        (After: " + Sub.timeline[i-1] + ")"
+      error += " </br>        (After: " + Sub.timeline[i - 1] + ")";
       messages(error, "e");
     }
     //text
     if (Sub.text[i] == "") {
       error = "Text #" + (i + 1) + " is empty!";
-      error += " </br> (After: " + Sub.text[i-1] + ")"
+      error += " </br> (After: " + Sub.text[i - 1] + ")";
       messages(error, "e");
     }
     //remove accidental spaces from timeline
@@ -82,4 +97,24 @@ function countRows() {
   for (let i = 0; i < spans.length; i++) {
     spans[i].innerHTML = rowsOf[i];
   }
+}
+
+function addNames() {
+  for (i = 0; i < Sub.names.length; i++) {
+    //if (Sub.names[i] == "Диктор") {
+    // .replace() to remove accdient spaces
+    Sub.text[i] = "(" + Sub.names[i].replace(/\s+/g, "") + ") " + Sub.text[i];
+    //}
+  }
+}
+
+function logInput() {
+  const text = Sub.text;
+  const timeline = Sub.timeline;
+  const names = Sub.names;
+  const delay = Sub.delay;
+  const shift = Sub.shift;
+  const starts_from = Sub.startsFrom;
+  sLog([{ text }, { timeline }, { names }], "t");
+  sLog([{ delay }, { shift }, { starts_from }], "t");
 }

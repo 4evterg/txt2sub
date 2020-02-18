@@ -10,7 +10,7 @@
   background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
   top: -100%;
   opacity: 0;
-  transition: opacity 1s;
+  transition: opacity 0.3s;
 }
 .sModal.show {
   top: 0;

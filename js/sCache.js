@@ -1,8 +1,11 @@
 let sCache = {
   save: function(id, value) {
-    if (!localStorage.getItem(id)) {
+    // checking if object was cached before 
+    // and it's value changed 
+    if (localStorage.getItem(id) != null && localStorage.getItem(id) != value) {
       localStorage.setItem(id, value);
-      console.trace("Varriable with id: " + id + " was added to cache!");
+      sLog("Varriable with id: " + id + " was added to cache!");
+      // sLog([{a}, {b}], "t");
     }
   },
   check: function() {
