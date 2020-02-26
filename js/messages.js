@@ -55,6 +55,15 @@ function sLog(message, type) {
   style += bgc;
   style += "color: #fff;";
 
+    if (caller != recent) {
+    console.log(
+      "%c ------- " + caller + "() ------- ",
+      style + "font-weight: bold;"
+    );
+  }
+
+  localStorage.setItem("sLog_recent", caller);
+
   switch (type) {
     case "e": // error
       color = "var(--error)";
@@ -66,6 +75,18 @@ function sLog(message, type) {
       // format of message in this case
       // must be - [{obj1}, {obj2}, {obj3}, ....]
       this.table = true;
+      let table_arr = {};
+    for (let i = 0; i < message.length; i++) {
+      const obj = message[i];
+      const key = Object.keys(obj)[0];
+      table_arr[key] = obj[key];
+    }
+    console.table(table_arr);
+      return;
+      break;
+    case "st": //simple table
+      console.table(message);
+      return;
       break;
     case "in": // inputed data
       color = "var(--warning)";
@@ -81,28 +102,8 @@ function sLog(message, type) {
       color = "var(--ok)";
       break;
   }
-
-  if (caller != recent) {
-    console.log(
-      "%c ------- " + caller + "() ------- ",
-      style + "font-weight: bold;"
-    );
-  }
-
-  // table style log or simple
-  if (!this.table) {
-    // console.log(message);
-    console.log("%c" + message, style);
-    console.log(style);
-  } else {
-    let table_arr = {};
-
-    for (let i = 0; i < message.length; i++) {
-      const obj = message[i];
-      const key = Object.keys(obj)[0];
-      table_arr[key] = obj[key];
-    }
-    console.table(table_arr);
-  }
-  localStorage.setItem("sLog_recent", caller);
+  
+      console.log("%c" + message, style);
+  
+  
 }

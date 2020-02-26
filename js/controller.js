@@ -30,6 +30,7 @@ function input() {
   sCache.save("delay_box", delay_box.value);
   sCache.save("shift_box", shift_box.value);
   sCache.save("start_box", start_box.value);
+  sCache.save("names_cb", document.getElementById("names_cb").value);
 
   //initiate letiables
   if (timeline_box.value != "") Sub.timeline = timeline_box.value.split("\n");
@@ -38,8 +39,9 @@ function input() {
   if (document.getElementById("names_cb").checked) {
     if (names_box.value != "") {
       Sub.names = names_box.value.split("\n");
-      addNames();
     }
+  } else {
+    Sub.names[0] = "";
   }
 
   Sub.delay = +delay_box.value;
@@ -96,15 +98,6 @@ function countRows() {
   }
   for (let i = 0; i < spans.length; i++) {
     spans[i].innerHTML = rowsOf[i];
-  }
-}
-
-function addNames() {
-  for (i = 0; i < Sub.names.length; i++) {
-    //if (Sub.names[i] == "Диктор") {
-    // .replace() to remove accdient spaces
-    Sub.text[i] = "(" + Sub.names[i].replace(/\s+/g, "") + ") " + Sub.text[i];
-    //}
   }
 }
 

@@ -10,6 +10,7 @@ const Sub = {
   startsFrom: 1,
   margin: 10,
   srt: [],
+  charsec: [],
   set: function() {}
 };
 
@@ -21,10 +22,14 @@ function convert() {
   // 3 - cause empty sub doesn't need text
   let clear_arr = new Array(length * 4 + 3);
 
-  // let margin = 10;
-
   //converting timeline to ms
   Sub.timeline = toMiliSec(Sub.timeline);
+  charsec(Sub.timeline, Sub.text);
+  combine(Sub.text, Sub.timeline);
+
+  if (Sub.names[0] != "") {
+    addNames();
+  }
 
   console.log("%c starting params", "color: green");
   //Computed property names
@@ -61,12 +66,12 @@ function convert() {
   // catching up those 1sec parts
   for (let i = 0; i < length; i++) {
     if (ends[i] - starts[i] < 1000) {
-      console.log("less than 1 sec: " + ends[i]);
+      sLog("less than 1 sec: " + ends[i]);
       let delta = 1000 - (ends[i] - starts[i]);
-      console.log("delta: " + delta);
+      sLog("delta: " + delta);
       starts[i + 1] += delta;
       ends[i] += delta;
-      console.log("changed to: " + ends[i]);
+      sLog("changed to: " + ends[i]);
     }
   }
 
@@ -130,4 +135,55 @@ function msToTime(s) {
   let mins = s % 60;
   let hrs = (s - mins) / 60;
   return pad(hrs) + ":" + pad(mins) + ":" + pad(secs) + "," + pad(ms, 3);
+}
+
+function addNames() {
+  for (i = 0; i < Sub.names.length; i++) {
+    let line = Sub.text[i];
+    if (line[0] != "-") {
+      // .replace() to remove accdient spaces
+      Sub.text[i] = "(" + Sub.names[i].replace(/\s+/g, "") + ") " + Sub.text[i];
+    }
+  }
+}
+
+// compute char/sec ratio
+// actually it is sec/char
+// works only with msec values
+function charsec(time, text) {
+  for (let i = 0; i < time.length - 1; i++) {
+    let duration = (time[i + 1] - time[i]) / 1000;
+    let diff = duration / text[i].length;
+    Sub.charsec.push(diff);
+    // sLog(diff);
+  }
+  let temp = Sub.charsec;
+  sLog(temp, "st");
+}
+
+// combine short scentencies to 1 sub
+function combine(text, time) {
+  let upto = 5;
+  let result_text = [];
+  let result_time = [];
+  let result_names = [];
+  for (let i = 0; i < text.length - 1; i++) {
+    let temp_inc = i;
+    if (text[i].length < upto) {
+      if (text[i + 1].length < upto) {
+        text[i] = "- " + text[i] + "\n- " + text[i + 1];
+        // result_text.push(temp_text);
+        // result_time.push(time[i]);
+        // result_names.push("");
+        temp_inc++;
+      }
+    }
+    result_text.push(text[i]);
+    result_time.push(time[i]);
+    result_names.push(Sub.names[i]);
+    i = temp_inc;
+  }
+  Sub.text = result_text;
+  Sub.timeline = result_time;
+  Sub.names = result_names;
 }

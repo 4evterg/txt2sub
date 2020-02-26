@@ -1,7 +1,7 @@
 let sCache = {
   save: function(id, value) {
-    // checking if object was cached before 
-    // and it's value changed 
+    // checking if object was cached before
+    // and it's value changed
     if (localStorage.getItem(id) != null && localStorage.getItem(id) != value) {
       localStorage.setItem(id, value);
       sLog("Varriable with id: " + id + " was added to cache!");
@@ -13,6 +13,7 @@ let sCache = {
       let key = localStorage.key(i);
       if (key != "sLog_recent") {
         document.getElementById(key).value = localStorage.getItem(key);
+        // sLog(key + ": " + localStorage.getItem(key));
       }
     }
   }
