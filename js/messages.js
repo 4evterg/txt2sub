@@ -54,8 +54,9 @@ function sLog(message, type) {
 
   style += bgc;
   style += "color: #fff;";
+  style += "text-shadow: 1px 1px 2px black;";
 
-    if (caller != recent) {
+  if (caller != recent) {
     console.log(
       "%c ------- " + caller + "() ------- ",
       style + "font-weight: bold;"
@@ -76,12 +77,12 @@ function sLog(message, type) {
       // must be - [{obj1}, {obj2}, {obj3}, ....]
       this.table = true;
       let table_arr = {};
-    for (let i = 0; i < message.length; i++) {
-      const obj = message[i];
-      const key = Object.keys(obj)[0];
-      table_arr[key] = obj[key];
-    }
-    console.table(table_arr);
+      for (let i = 0; i < message.length; i++) {
+        const obj = message[i];
+        const key = Object.keys(obj)[0];
+        table_arr[key] = obj[key];
+      }
+      console.table(table_arr);
       return;
       break;
     case "st": //simple table
@@ -102,8 +103,6 @@ function sLog(message, type) {
       color = "var(--ok)";
       break;
   }
-  
-      console.log("%c" + message, style);
-  
-  
+
+  console.log("%c" + message, style);
 }

@@ -93,7 +93,10 @@ function countRows() {
 
   if (time != text) {
     messages("number of timeline and text strings doesn't match", "e");
-  } else if (names != time || names != text) {
+  } else if (
+    (names != time || names != text) &&
+    document.getElementById("names_cb").checked
+  ) {
     messages("number of names strings doesn't match", "w");
   }
   for (let i = 0; i < spans.length; i++) {

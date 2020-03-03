@@ -167,6 +167,13 @@ function combine(text, time) {
   let result_text = [];
   let result_time = [];
   let result_names = [];
+
+  // lasto4ka eba
+  // check if we combaine last value with smth
+  // or we need to push it
+  // all because of the cycle borders (text.length-1)
+  let last_check = false;
+
   for (let i = 0; i < text.length - 1; i++) {
     let temp_inc = i;
     if (text[i].length < upto) {
@@ -176,6 +183,9 @@ function combine(text, time) {
         // result_time.push(time[i]);
         // result_names.push("");
         temp_inc++;
+        if (i == text.length - 2) {
+          last_check = true;
+        }
       }
     }
     result_text.push(text[i]);
@@ -183,7 +193,18 @@ function combine(text, time) {
     result_names.push(Sub.names[i]);
     i = temp_inc;
   }
+  // need those to push last values that
+  if (!last_check) {
+    result_text.push(text[text.length - 1]);
+    result_time.push(time[text.length - 1]);
+    result_names.push(Sub.names[text.length - 1]);
+    last_check = false;
+  }
+
   Sub.text = result_text;
   Sub.timeline = result_time;
   Sub.names = result_names;
+  console.table(Sub.text);
+  console.table(Sub.timeline);
+  console.table(Sub.names);
 }
