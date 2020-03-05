@@ -53,9 +53,20 @@ function input() {
   //clear up error messages
   new messages().clear();
 
+
+
   //check for input errors & remove them if possibe
   errors();
   countRows();
+
+  //converting timeline to ms
+  // must be done before any other operation
+  // most of them needed time in ms format
+  Sub.timeline = toMiliSec(Sub.timeline);
+  charsec(Sub.timeline, Sub.text);
+  combine(Sub.text, Sub.timeline);
+
+  
   convert();
 
   //output results

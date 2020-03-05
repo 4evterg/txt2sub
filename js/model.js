@@ -1,5 +1,3 @@
-const deleteMe = () => console.trace("Alloha");
-
 //main object
 const Sub = {
   timeline: ["00:01", "00:02"],
@@ -16,28 +14,18 @@ const Sub = {
 
 // timeline, text, delay, shift, startsFrom
 function convert() {
-  let length = Sub.timeline.length;
   ("use strict");
-  //this size is choosen because of 4 rows on each sub + empty sub
-  // 3 - cause empty sub doesn't need text
-  let clear_arr = new Array(length * 4 + 3);
 
-  //converting timeline to ms
-  Sub.timeline = toMiliSec(Sub.timeline);
-  charsec(Sub.timeline, Sub.text);
-  combine(Sub.text, Sub.timeline);
+  // most manipulaitions with data must be done before length and clear_arr init
 
   if (Sub.names[0] != "") {
     addNames();
   }
 
-  console.log("%c starting params", "color: green");
-  //Computed property names
-  //console.log({delay, shift, startsFrom});
-  // display info as a table
-  //console.table([delay, shift, startsFrom]);
-  //trace shows from where function was called
-  deleteMe();
+  let length = Sub.timeline.length;
+  //this size is choosen because of 4 rows on each sub + empty sub
+  // 3 - cause empty sub doesn't need text
+  let clear_arr = new Array(length * 4 + 3);
 
   //start and end codes of sub
   let starts = new Array(length);
@@ -179,9 +167,6 @@ function combine(text, time) {
     if (text[i].length < upto) {
       if (text[i + 1].length < upto) {
         text[i] = "- " + text[i] + "\n- " + text[i + 1];
-        // result_text.push(temp_text);
-        // result_time.push(time[i]);
-        // result_names.push("");
         temp_inc++;
         if (i == text.length - 2) {
           last_check = true;
@@ -196,15 +181,12 @@ function combine(text, time) {
   // need those to push last values that
   if (!last_check) {
     result_text.push(text[text.length - 1]);
-    result_time.push(time[text.length - 1]);
     result_names.push(Sub.names[text.length - 1]);
+    result_time.push(time[text.length - 1]);
     last_check = false;
   }
 
   Sub.text = result_text;
   Sub.timeline = result_time;
   Sub.names = result_names;
-  console.table(Sub.text);
-  console.table(Sub.timeline);
-  console.table(Sub.names);
 }

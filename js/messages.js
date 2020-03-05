@@ -82,19 +82,27 @@ function sLog(message, type) {
         const key = Object.keys(obj)[0];
         table_arr[key] = obj[key];
       }
-      console.table(table_arr);
+      console.table(table_arr);      
       return;
       break;
     case "st": //simple table
       console.table(message);
       return;
       break;
-    case "in": // inputed data
-      color = "var(--warning)";
-      break;
-    case "prog": // data in progress
-      color = "var(--warning)";
-      break;
+      // Work in progress
+    // case "it": // incrimented table
+    //   // in case if we have cycle or smth else
+    //   // stack up values and in the end
+    //   // display them as a table
+    //   // thru "dit" option
+    //   it_arr.push(message);
+    //   return;
+    //   break;
+    // case "dit": // display incrimented table result
+    //   console.log("%c " + message, "background-color: black; color: white;");
+    //   console.table(it_arr);
+    //   return;
+    //   break;
     case "out": // outputed data
       color = "var(--warning)";
       break;
@@ -104,5 +112,5 @@ function sLog(message, type) {
       break;
   }
 
-  console.log("%c" + message, style);
+  console.log(message);
 }
