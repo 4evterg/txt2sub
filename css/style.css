@@ -59,6 +59,10 @@ input:focus {
   margin-bottom: 10px;
   width: 100%;
 }
+.unite{
+	border: 2px dashed var(--cs_color);
+	border-radius: 10px;
+}
 
 /*TOP PART*/
 .navbar {
@@ -89,7 +93,8 @@ input:focus {
 #blackstrip div {
   height: calc(100% - var(--pd_main));
 }
-#blackstrip .card {
+#blackstrip .card,
+.testt {
   background-color: unset;
   border: none;
   padding: 5px;

@@ -30,7 +30,6 @@ function input() {
   sCache.save("delay_box", delay_box.value);
   sCache.save("shift_box", shift_box.value);
   sCache.save("start_box", start_box.value);
-  sCache.save("names_cb", document.getElementById("names_cb").value);
 
   //initiate letiables
   if (timeline_box.value != "") Sub.timeline = timeline_box.value.split("\n");
@@ -53,8 +52,6 @@ function input() {
   //clear up error messages
   new messages().clear();
 
-
-
   //check for input errors & remove them if possibe
   errors();
   countRows();
@@ -64,9 +61,14 @@ function input() {
   // most of them needed time in ms format
   Sub.timeline = toMiliSec(Sub.timeline);
   charsec(Sub.timeline, Sub.text);
-  combine(Sub.text, Sub.timeline);
+  if (document.getElementById("unite_cb").checked) {
+    let unite_length = document.getElementById("unite_length");
+    let unite_time = document.getElementById("unite_time");
+    sCache.save("unite_length", unite_length.value);
+    sCache.save("unite_time", unite_time.value);
+    combine(unite_length.value, unite_time.value);
+  }
 
-  
   convert();
 
   //output results

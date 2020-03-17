@@ -54,12 +54,12 @@ function convert() {
   // catching up those 1sec parts
   for (let i = 0; i < length; i++) {
     if (ends[i] - starts[i] < 1000) {
-      sLog("less than 1 sec: " + ends[i]);
+      // sLog("less than 1 sec: " + ends[i]);
       let delta = 1000 - (ends[i] - starts[i]);
-      sLog("delta: " + delta);
+      // sLog("delta: " + delta);
       starts[i + 1] += delta;
       ends[i] += delta;
-      sLog("changed to: " + ends[i]);
+      // sLog("changed to: " + ends[i]);
     }
   }
 
@@ -129,8 +129,13 @@ function addNames() {
   for (i = 0; i < Sub.names.length; i++) {
     let line = Sub.text[i];
     if (line[0] != "-") {
-      // .replace() to remove accdient spaces
-      Sub.text[i] = "(" + Sub.names[i].replace(/\s+/g, "") + ") " + Sub.text[i];
+      if (Sub.names[i] != "") {
+        // .replace() to remove accdient spaces
+        Sub.text[i] =
+          "(" + Sub.names[i].replace(/\s+/g, "") + ") " + Sub.text[i];
+      } else {
+        messages("name #" + i + " is empty", "w");
+      }
     }
   }
 }
@@ -150,8 +155,9 @@ function charsec(time, text) {
 }
 
 // combine short scentencies to 1 sub
-function combine(text, time) {
-  let upto = 5;
+function combine(upto, durence) {
+  let text = Sub.text;
+  let time = Sub.timeline;
   let result_text = [];
   let result_time = [];
   let result_names = [];
@@ -164,8 +170,12 @@ function combine(text, time) {
 
   for (let i = 0; i < text.length - 1; i++) {
     let temp_inc = i;
-    if (text[i].length < upto) {
-      if (text[i + 1].length < upto) {
+    // sLog((time[i+1] - time[i])<= durence*1000);
+    if (text[i].length <= upto && time[i + 1] - time[i] <= durence * 1000) {
+      if (
+        text[i + 1].length <= upto &&
+        time[i + 2] - time[i + 1] <= durence * 1000
+      ) {
         text[i] = "- " + text[i] + "\n- " + text[i + 1];
         temp_inc++;
         if (i == text.length - 2) {

@@ -17,6 +17,7 @@
     <link type="text/css" rel="stylesheet" href="css/style.css" />
     <link type="text/css" rel="stylesheet" href="css/media.css" />
     <link type="text/css" rel="stylesheet" href="css/sModal.css" />
+    <link type="text/css" rel="stylesheet" href="css/toggle.css" />
 
     <script src="js/model.js"></script>
     <script src="js/messages.js"></script>
@@ -77,9 +78,24 @@
         <div class="row">
           <div class="col">
             <div>
-              <span>names</span>
-              <input type="checkbox" name="names_cb" id="names_cb" />
+              <span>names</span><br />
+              <label class="switch">
+                <input type="checkbox" name="names_cb" id="names_cb" />
+                <span class="slider"></span>
+              </label>
             </div>
+          </div>
+          <div class="col unite">
+            <span>unite short?</span><br />
+            <label class="switch">
+              <input type="checkbox" name="unite_cb" id="unite_cb" />
+              <span class="slider"></span>
+            </label>
+            <br />
+            <span>unite length:</span>
+            <input type="text" id="unite_length" placeholder="5" value="5" />
+            <span>unite time:</span>
+            <input type="text" id="unite_time" placeholder="1" value="1" />
           </div>
         </div>
       </div>

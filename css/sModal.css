@@ -27,6 +27,7 @@
   border: 1px solid #888;
   width: 70%; /* Could be more or less, depending on screen size */
   transition: top 0.3s;
+  border-radius: 7px;
 }
 .sModal-content.show {
   top: 0;
