@@ -3,12 +3,17 @@ localStorage.setItem("sLog_recent", 0);
 
 function messages(message, type) {
   let color;
+
   switch (type) {
     case "e": // error
       color = "var(--error)";
+      let errorMessage = document.createElement("span");
+      errorMessage.innerHTML += message + "<br>";
+      document.getElementById("errors").appendChild(errorMessage);
       break;
     case "w": // warning
       color = "var(--warning)";
+      sLog(message, "w");
       break;
     default:
       // ok
@@ -17,12 +22,6 @@ function messages(message, type) {
   }
   let indicator = document.getElementById("blackstrip");
   indicator.style.backgroundColor = color;
-
-  if (type == "e") {
-    let errorMessage = document.createElement("span");
-    errorMessage.innerHTML += message + "<br>";
-    document.getElementById("errors").appendChild(errorMessage);
-  }
 
   //reset from the previous check
   this.clear = () => {
@@ -67,11 +66,17 @@ function sLog(message, type) {
 
   switch (type) {
     case "e": // error
-      color = "var(--error)";
-      break;
+      console.log(
+        "%c" + message,
+        "background-color: #d72323; color: #fff; text-shadow: 1px 1px 2px black;"
+      );
+      return;
     case "w": // warning
-      color = "var(--warning)";
-      break;
+      console.log(
+        "%c" + message,
+        "background-color: #ffd105; color: #fff; text-shadow: 1px 1px 2px black;"
+      );
+      return;
     case "t": // in table view
       // format of message in this case
       // must be - [{obj1}, {obj2}, {obj3}, ....]
@@ -82,14 +87,13 @@ function sLog(message, type) {
         const key = Object.keys(obj)[0];
         table_arr[key] = obj[key];
       }
-      console.table(table_arr);      
+      console.table(table_arr);
       return;
-      break;
     case "st": //simple table
       console.table(message);
       return;
-      break;
-      // Work in progress
+
+    // Work in progress
     // case "it": // incrimented table
     //   // in case if we have cycle or smth else
     //   // stack up values and in the end
@@ -112,5 +116,17 @@ function sLog(message, type) {
       break;
   }
 
-  console.log(message);
+  console.log("%c" + message, color);
+}
+
+// -------------sToast-------------
+function sToast(message) {
+  var toast = document.getElementById("sToast");
+  //reset from previous usage
+  toast.innerHTML = "";
+  toast.innerHTML = message;
+  toast.classList.add("show");
+  setTimeout(function() {
+    toast.className = toast.className.replace("show", "");
+  }, 2000);
 }

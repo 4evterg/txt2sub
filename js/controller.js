@@ -73,6 +73,7 @@ function input() {
 
   //output results
   output_box.value = Sub.srt.join("\n");
+  download("subtitles.srt", Sub.srt.join("\n"));
 }
 
 function errors() {
@@ -126,4 +127,20 @@ function logInput() {
   const starts_from = Sub.startsFrom;
   sLog([{ text }, { timeline }, { names }], "t");
   sLog([{ delay }, { shift }, { starts_from }], "t");
+}
+
+function download(filename, text) {
+  var element = document.createElement("a");
+  element.setAttribute(
+    "href",
+    "data:text/plain;charset=utf-8," + encodeURIComponent(text)
+  );
+  element.setAttribute("download", filename);
+
+  element.style.display = "none";
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
 }

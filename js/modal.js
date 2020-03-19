@@ -27,15 +27,3 @@ window.onclick = function(event) {
     sm_content.classList.remove("show");
   }
 };
-
-// -------------sToast-------------
-function sToast(message) {
-  var toast = document.getElementById("sToast");
-  //reset from previous usage
-  toast.innerHTML = "";
-  toast.innerHTML = message;
-  toast.classList.add("show");
-  setTimeout(function() {
-    toast.className = toast.className.replace("show", "");
-  }, 2000);
-}
