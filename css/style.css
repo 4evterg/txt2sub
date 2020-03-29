@@ -25,8 +25,6 @@ html {
 /*main style*/
 body {
   background-color: var(--page_bg);
-  height: 100vh;
-  min-width: 350px;
 }
 textarea {
   min-height: 50px;
@@ -44,6 +42,10 @@ textarea:focus,
 input:focus {
   outline-style: none;
 }
+.wrapper-main {
+  height: 100vh;
+  min-width: 350px;
+}
 
 /* settings popup */
 .sModal-content div {
@@ -59,9 +61,9 @@ input:focus {
   margin-bottom: 10px;
   width: 100%;
 }
-.unite{
-	border: 2px dashed var(--cs_color);
-	border-radius: 10px;
+.unite {
+  border: 2px dashed var(--cs_color);
+  border-radius: 10px;
 }
 
 /*TOP PART*/
@@ -70,7 +72,7 @@ input:focus {
   padding-bottom: 0;
 }
 .logo {
-  height: 60px;
+  height: 50px;
 }
 .logo-text {
   font-weight: bold;
@@ -93,8 +95,7 @@ input:focus {
 #blackstrip div {
   height: calc(100% - var(--pd_main));
 }
-#blackstrip .card,
-.testt {
+#blackstrip .card {
   background-color: unset;
   border: none;
   padding: 5px;

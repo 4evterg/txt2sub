@@ -19,7 +19,7 @@
 .sModal-content {
   position: absolute;
   z-index: 991;
-  top: -100%;
+  top: -120%;
   left: 15%;
   background-color: var(--page_bg);
   margin: 15% auto; /* 15% from the top and centered */
@@ -28,10 +28,16 @@
   width: 70%; /* Could be more or less, depending on screen size */
   transition: top 0.3s;
   border-radius: 7px;
+  opacity: 0;
 }
 .sModal-content.show {
+  /* opacity: 1; */
   top: 0;
 }
+.sModal-content.unhide {
+  opacity: 1;
+}
+
 .sModal-header {
   font-size: 24px;
   margin-bottom: 10px;

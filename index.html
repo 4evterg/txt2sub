@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DOC2SUB</title>
+    <title>SCRIPT2SUB</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="content-language" content="ru" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-    <meta name="description" content="simple 'script to subtittle' convertor" />
+    <!-- discription -->
+    <meta name="description" content="simple 'script to subtitle' convertor" />
+    <meta name="Keywords" content="srt, convertor, text, script, subtitle" />
+    <meta name="yandex-verification" content="5796d88208e66710" />
     <!-- Favicon -->
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
@@ -19,153 +22,211 @@
     <link type="text/css" rel="stylesheet" href="css/sModal.css" />
     <link type="text/css" rel="stylesheet" href="css/toggle.css" />
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-161578543-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-161578543-1");
+    </script>
+
     <script src="js/model.js"></script>
     <script src="js/messages.js"></script>
   </head>
 
   <body>
-    <!-- top part -->
-    <!-- logo, name, settings -->
-    <nav class="navbar navbar-expand-sm">
-      <a class="navbar-brand mr-auto" href="/index.html">
-        <img src="images/logo.png" alt="" class="logo" />
-        <span class="logo-text">DOC2SUB</span>
-      </a>
-      <ul class="nav navbar-nav">
-        <!-- Trigger/Open sModal -->
-        <button class="btn btn-danger" id="sModalBtn">Settings</button>
-      </ul>
-    </nav>
+    <div class="wrapper-main">
+      <!-- top part -->
+      <!-- logo, name, settings -->
+      <nav class="navbar navbar-expand-sm">
+        <a class="navbar-brand mr-auto" href="/index.html">
+          <!-- <img src="images/logo.png" alt="" class="logo" /> -->
+          <span class="logo-text">SCRIPT2SUB</span>
+        </a>
+        <ul class="nav navbar-nav">
+          <!-- Trigger/Open sModal -->
+          <button class="btn btn-danger" id="sModalBtn">Settings</button>
+        </ul>
+      </nav>
 
-    <!-- sModal background blur -->
-    <div id="sModal" class="sModal"></div>
+      <!-- sModal background blur -->
+      <div id="sModal" class="sModal"></div>
 
-    <!-- sModal panel -->
-    <!-- AKA settings -->
-    <div id="sm-content" class="sModal-content">
-      <div class="container">
-        <div class="row sModal-header">
-          <div class="col">
-            <span>Settings</span>
-            <span class="sModal-close">&times;</span>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <div>
-              <span>delay:</span>
-              <input type="text" id="delay_box" value="20" />
+      <!-- sModal panel -->
+      <!-- AKA settings -->
+      <div id="sm-content" class="sModal-content">
+        <div class="container">
+          <div class="row sModal-header">
+            <div class="col">
+              <span>Settings</span>
+              <span class="sModal-close">&times;</span>
             </div>
           </div>
-          <div class="col-md-4">
-            <div>
-              <span>shift:</span>
-              <input
-                type="text"
-                id="shift_box"
-                placeholder="10 ms"
-                value="900"
-              />
+          <div class="row">
+            <div class="col-md-4">
+              <div>
+                <span>delay:</span>
+                <input type="text" id="delay_box" value="20" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div>
+                <span>shift:</span>
+                <input
+                  type="text"
+                  id="shift_box"
+                  placeholder="10 ms"
+                  value="900"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div>
+                <span>start:</span>
+                <input type="text" id="start_box" placeholder="1" value="1" />
+              </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div>
-              <span>start:</span>
-              <input type="text" id="start_box" placeholder="1" value="1" />
+          <div class="row">
+            <div class="col">
+              <div>
+                <span>names</span><br />
+                <label class="switch">
+                  <input type="checkbox" name="names_cb" id="names_cb" />
+                  <span class="slider"></span>
+                </label>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <div>
-              <span>names</span><br />
+            <div class="col unite">
+              <span>unite short?</span><br />
               <label class="switch">
-                <input type="checkbox" name="names_cb" id="names_cb" />
+                <input type="checkbox" name="unite_cb" id="unite_cb" />
                 <span class="slider"></span>
               </label>
+              <br />
+              <span>unite length:</span>
+              <input type="text" id="unite_length" placeholder="5" value="5" />
+              <span>unite time:</span>
+              <input type="text" id="unite_time" placeholder="1" value="1" />
             </div>
-          </div>
-          <div class="col unite">
-            <span>unite short?</span><br />
-            <label class="switch">
-              <input type="checkbox" name="unite_cb" id="unite_cb" />
-              <span class="slider"></span>
-            </label>
-            <br />
-            <span>unite length:</span>
-            <input type="text" id="unite_length" placeholder="5" value="5" />
-            <span>unite time:</span>
-            <input type="text" id="unite_time" placeholder="1" value="1" />
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- input -->
-    <!-- manual input -->
-    <div class="jumbotron" id="blackstrip">
-      <div class="container h-100">
-        <div class="row">
-          <div class="col-md">
-            <span class="box_header text-center">time</span>
-            <div class="card">
-              <textarea
-                id="timeline_box"
-                placeholder="time goes here"
-              ></textarea>
-              <span class="countRows"></span>
+      <!-- input -->
+      <!-- manual input -->
+      <div class="jumbotron" id="blackstrip">
+        <div class="container h-100">
+          <div class="row">
+            <div class="col-md">
+              <span class="box_header text-center">time</span>
+              <div class="card">
+                <textarea
+                  id="timeline_box"
+                  placeholder="time goes here"
+                ></textarea>
+                <span class="countRows"></span>
+              </div>
+            </div>
+
+            <div class="col-md" id="names_col">
+              <span class="box_header text-center">names</span>
+              <div class="card">
+                <textarea
+                  id="names_box"
+                  placeholder="names goes here"
+                ></textarea>
+                <span class="countRows"></span>
+              </div>
+            </div>
+
+            <div class="col-md">
+              <span class="box_header text-center">text</span>
+              <div class="card">
+                <textarea id="text_box" placeholder="text goes here"></textarea>
+                <span class="countRows"></span>
+              </div>
             </div>
           </div>
 
-          <div class="col-md" id="names_col">
-            <span class="box_header text-center">names</span>
-            <div class="card">
-              <textarea id="names_box" placeholder="names goes here"></textarea>
-              <span class="countRows"></span>
-            </div>
-          </div>
-
-          <div class="col-md">
-            <span class="box_header text-center">text</span>
-            <div class="card">
-              <textarea id="text_box" placeholder="text goes here"></textarea>
-              <span class="countRows"></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="convert row justify-content-center">
-          <input
-            class="btn btn-danger convert-btn"
-            type="button"
-            value="convert!"
-            onclick="input()"
-          />
-        </div>
-      </div>
-    </div>
-
-    <!-- errors display -->
-    <div id="errors"></div>
-
-    <div class="container output-con">
-      <!-- ouptut -->
-      <div class="row output-row">
-        <div class="col">
-          <div class="card">
-            <span class="box_header text-center">result</span>
-            <textarea id="output_box" readonly></textarea>
+          <div class="convert row justify-content-center">
+            <input
+              class="btn btn-danger convert-btn"
+              type="button"
+              value="convert!"
+              onclick="input()"
+            />
           </div>
         </div>
       </div>
+
+      <!-- errors display -->
+      <div id="errors"></div>
+
+      <div class="container output-con">
+        <!-- ouptut -->
+        <div class="row output-row">
+          <div class="col">
+            <div class="card">
+              <span class="box_header text-center">result</span>
+              <textarea id="output_box" readonly></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="sToast"></div>
     </div>
 
-    <div id="sToast"></div>
+    <!-- HELP part -->
+    <div class="help">
+      <div class="container">
+        <div class="text-center mt-4 mb-4">
+          <h3>HOW TO</h3>
+        </div>
+
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quas unde
+        similique, aperiam laborum necessitatibus est reprehenderit. Maxime
+        cupiditate, corrupti, accusamus eum sapiente, sunt dolores ipsum
+        quisquam mollitia aliquid repellendus? Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Iusto quas unde similique, aperiam laborum
+        necessitatibus est reprehenderit. Maxime cupiditate, corrupti, accusamus
+        eum sapiente, sunt dolores ipsum quisquam mollitia aliquid repellendus?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quas unde
+        similique, aperiam laborum necessitatibus est reprehenderit. Maxime
+        cupiditate, corrupti, accusamus eum sapiente, sunt dolores ipsum
+        quisquam mollitia aliquid repellendus? Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Iusto quas unde similique, aperiam laborum
+        necessitatibus est reprehenderit. Maxime cupiditate, corrupti, accusamus
+        eum sapiente, sunt dolores ipsum quisquam mollitia aliquid repellendus?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quas unde
+        similique, aperiam laborum necessitatibus est reprehenderit. Maxime
+        cupiditate, corrupti, accusamus eum sapiente, sunt dolores ipsum
+        quisquam mollitia aliquid repellendus? Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Iusto quas unde similique, aperiam laborum
+        necessitatibus est reprehenderit. Maxime cupiditate, corrupti, accusamus
+        eum sapiente, sunt dolores ipsum quisquam mollitia aliquid repellendus?
+      </div>
+    </div>
 
     <!-- Scripts -->
     <script src="js/sCache.js"></script>
     <script src="js/controller.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/common.js"></script>
+
+    <!-- Google AdSense -->
+    <!-- <script
+      data-ad-client="ca-pub-4428691722578024"
+      async=""
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+    ></script> -->
   </body>
 </html>

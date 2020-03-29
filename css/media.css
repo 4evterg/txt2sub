@@ -20,11 +20,17 @@
     height: auto;
   }
   #blackstrip .card {
-    height: 180px;
+    height: 200px;
   }
   .convert-btn {
     position: absolute;
     margin-top: -10px;
+  }
+  .wrapper-main {
+    height: auto;
+  }
+  .output-con {
+    height: 250px;
   }
 }
 

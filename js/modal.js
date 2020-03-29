@@ -11,6 +11,8 @@ var span = document.getElementsByClassName("sModal-close")[0];
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
   modal.classList.add("show");
+
+  sm_content.classList.add("unhide");
   sm_content.classList.add("show");
 };
 
@@ -18,6 +20,9 @@ btn.onclick = function() {
 span.onclick = function() {
   modal.classList.remove("show");
   sm_content.classList.remove("show");
+  setTimeout(function() {
+    sm_content.classList.remove("unhide");
+  }, 1000);
 };
 
 // When the user clicks anywhere outside of the modal, close it
@@ -25,5 +30,8 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.classList.remove("show");
     sm_content.classList.remove("show");
+    setTimeout(function() {
+      sm_content.classList.remove("unhide");
+    }, 1000);
   }
 };
