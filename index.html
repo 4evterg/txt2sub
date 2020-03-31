@@ -189,30 +189,148 @@
     <div class="help">
       <div class="container">
         <div class="text-center mt-4 mb-4">
+          <h3>Who is this app for</h3>
+        </div>
+        <div class="row">
+          <div class="col">
+            <img src="images/logo.png" class="img-left" />
+
+            Mostly for those who make subtitles in a big studios (for those who
+            already have a voice script). This convertor squiz together timeline
+            and text into .srt format, saving a lot of time that usaully wasted
+            by simply copying text from document into a subtitle edit programm.
+            Just try it out a few times to understand how much time it is really
+            saves. App also have a "names" feature, that might be interesting if
+            you make subtitles for a deaf or a hard of hearing people. For a
+            right now all of this is still work in progress, so it would get
+            more features and support in near future. If you have any ideas,
+            problems, suggestions or offers please contact me (contact info in
+            footer down below)
+          </div>
+        </div>
+        <div class="text-center mt-4 mb-4">
           <h3>HOW TO</h3>
         </div>
-
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quas unde
-        similique, aperiam laborum necessitatibus est reprehenderit. Maxime
-        cupiditate, corrupti, accusamus eum sapiente, sunt dolores ipsum
-        quisquam mollitia aliquid repellendus? Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Iusto quas unde similique, aperiam laborum
-        necessitatibus est reprehenderit. Maxime cupiditate, corrupti, accusamus
-        eum sapiente, sunt dolores ipsum quisquam mollitia aliquid repellendus?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quas unde
-        similique, aperiam laborum necessitatibus est reprehenderit. Maxime
-        cupiditate, corrupti, accusamus eum sapiente, sunt dolores ipsum
-        quisquam mollitia aliquid repellendus? Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Iusto quas unde similique, aperiam laborum
-        necessitatibus est reprehenderit. Maxime cupiditate, corrupti, accusamus
-        eum sapiente, sunt dolores ipsum quisquam mollitia aliquid repellendus?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quas unde
-        similique, aperiam laborum necessitatibus est reprehenderit. Maxime
-        cupiditate, corrupti, accusamus eum sapiente, sunt dolores ipsum
-        quisquam mollitia aliquid repellendus? Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Iusto quas unde similique, aperiam laborum
-        necessitatibus est reprehenderit. Maxime cupiditate, corrupti, accusamus
-        eum sapiente, sunt dolores ipsum quisquam mollitia aliquid repellendus?
+        <div class="row">
+          <div class="col">
+            <h5>Time</h5>
+            <img src="images/timeline.png" class="img-right" />
+            <p>
+              Time field must contain a timeline column from the voice script.
+              Just simply Ctrl-C - Ctrl-V whole column from your doc and you
+              ready to go. Remember to make sure that there is no empty
+              timecodes
+              <i>(check the last line after copying - it is usaully blank)</i>.
+              Don't worry in case if you miss some empty lines. App will tell
+              you what timecodes are missing. In a future updates I will also
+              provide an automatic timeline generation and empty timecodes
+              suggestion.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h5>Text</h5>
+            <img src="images/text.png" class="img-left" />
+            <p>
+              Text field must contain a text you want to convert into subtiles.
+              Each phrase is separated by a new string (Enter key). Like a time
+              field you need to make sure that there is no blank strings. One
+              other important thing is that number of lines in text field and
+              time filed needs to
+              <b>match accordingly!</b>. But don't worry much either - app will
+              tell you if something go wrong <i>(and indicate what exactly)</i>.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h5>Names</h5>
+            <img src="images/names.png" class="img-right" />
+            <p>
+              Names field is <b>optional</b>. You can enable or disable it in a
+              <b>settings</b>. It will provide a name in a format
+              <b>(Name)</b> before each sentence
+              <i
+                >(with the exception of short ones if a <b>short option</b> is
+                enabled)</i
+              >. That option is mostly useful if you creating subtitles for hard
+              of hearing people, where it is very important to indicate who is
+              speaking right now.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h5>Unite</h5>
+            <img src="images/unite.png" class="img-left" />
+            <p>
+              This option is a great one once you get used to it! It's just do
+              what its said - <b>unite</b>! More specifecly unite short
+              scentences <i>(shorter or equal to a <b>unite length</b>)</i> said
+              in a short period of time
+              <i>(shorter or equal to a <b>unite time</b>)</i>. It is most
+              useful for dialogs. As an example two phrases:
+              <i>1(Dalek) Doctor! 2(Doctor) Dalek!</i> will transform into one:
+              <i>- Doctor! - Dalek!</i> It will separate phrases by a new line.
+              Also if <b>Names option</b> is enabled it will delete the
+              <b>(Name)</b>
+              in the start of scentece. <b>Unite length</b> is number of
+              characters in single pharase . <b>Unite time</b> is time in
+              seconds of that phrase. Example above will work if
+              <b>Unite length</b> set to 6 and both phrases are said in a period
+              of time lower or equal than a <b>Unite time</b>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h5>Start</h5>
+            <img src="images/start.PNG" class="img-right" />
+            <p>
+              This one set a number for first subtitle. For a example - if in a
+              process of work you notice that a second half of subtitles
+              generated wrong for some simple mistake in a source - just fix it
+              and generate subtitles from there
+              <i
+                >(set <b>Start</b> to lets say 43, copy matching text and
+                timeline and move on)</i
+              >
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h5>Delay</h5>
+            <img src="images/delay.PNG" class="img-left" />
+            <p>
+              Set a delay in timeline in seconds. If timeline and video you have
+              is a slightly off this option will fix it. For an example - if
+              timeline starts at 00:01 but in video it is on 00:07 set
+              <b>delay</b> to 6 and from now all timecodes will have +6 seconds
+              to them:
+              <i
+                >00:01 transforms into 00:07, 00:03 into 00:09, 00:15 into 00:21
+                and so on</i
+              >
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h5>Shift</h5>
+            <img src="images/shift.PNG" class="img-right" />
+            <p>
+              Sets a delay in miliseconds to display and clear a subtitle
+              <i>(in ragne from 1 to 999 ms)</i>. This option is a bit harder to
+              understand but in short words - it shifts every phrase a little
+              bit. For an example if it is set to <b>10</b> miliseconds timecode
+              after conversion will be something like this 00:00:01,0<b>10</b>
+              --- 00:00:03,0<b>10</b> and if it is set to <b>900</b> miliseconds
+              it will be like this 00:00:01,<b>900</b> --- 00:00:03,<b>900</b>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
 
