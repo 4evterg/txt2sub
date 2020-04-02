@@ -46,6 +46,11 @@ h5 {
   color: var(--error);
   margin-top: 10px;
 }
+footer {
+  background-color: black;
+  /*height: 100px;*/
+  color: #fff;
+}
 .wrapper-main {
   height: 100vh;
   min-width: 350px;
@@ -147,6 +152,12 @@ h5 {
     -6px -6px 12px rgba(255, 255, 255, 0.2);
   z-index: 10;
 }
+.rformat {
+  border: 2px solid red;
+  background-color: red;
+  width: 100px;
+}
+
 .output-con {
   height: calc((100% - 120px) / 2);
   margin-top: 20px;

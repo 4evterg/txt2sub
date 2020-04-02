@@ -19,8 +19,10 @@ function input() {
 
   const output_box = document.getElementById("output_box");
 
+  
+
   //clear output from the previous time
-  Sub.srt = [];
+  Sub.output = [];
 
   //caching values
   sCache.save("timeline_box", timeline_box.value);
@@ -72,8 +74,10 @@ function input() {
   convert();
 
   //output results
-  output_box.value = Sub.srt.join("\n");
-  download("subtitles.srt", Sub.srt.join("\n"));
+  output_box.value = Sub.output.join("\n");
+  if (autodown_cb.checked){
+    download("subtitles.srt", Sub.output.join("\n"));
+  }
 }
 
 function errors() {

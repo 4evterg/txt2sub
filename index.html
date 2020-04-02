@@ -102,6 +102,12 @@
                   <input type="checkbox" name="names_cb" id="names_cb" />
                   <span class="slider"></span>
                 </label>
+                <br />
+                <span>Auto download</span><br />
+                <label class="switch">
+                  <input type="checkbox" name="autodown_cb" id="autodown_cb" />
+                  <span class="slider"></span>
+                </label>
               </div>
             </div>
             <div class="col unite">
@@ -155,14 +161,35 @@
               </div>
             </div>
           </div>
-
           <div class="convert row justify-content-center">
-            <input
-              class="btn btn-danger convert-btn"
-              type="button"
-              value="convert!"
-              onclick="input()"
-            />
+            <div class="choose-block">
+              <form name="choose-format">
+                <label class="choose" style="margin-right: -20px;">
+                  <input
+                    type="radio"
+                    name="format"
+                    value="srt"
+                    class="rformat"
+                  />
+                  <span class="choiser">.SRT</span>
+                </label>
+                <input
+                  class="btn btn-danger convert-btn"
+                  type="button"
+                  value="convert!"
+                  onclick="input()"
+                />
+                <label class="choose" style="margin-left: -20px;">
+                  <input
+                    type="radio"
+                    name="format"
+                    value="ass"
+                    class="rformat"
+                  />
+                  <span class="choiser">.ASS</span>
+                </label>
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -231,7 +258,7 @@
         <div class="row">
           <div class="col">
             <h5>Text</h5>
-            <img src="images/text.png" class="img-left" />
+            <img src="images/text.PNG" class="img-left" />
             <p>
               Text field must contain a text you want to convert into subtiles.
               Each phrase is separated by a new string (Enter key). Like a time
@@ -246,7 +273,7 @@
         <div class="row">
           <div class="col">
             <h5>Names</h5>
-            <img src="images/names.png" class="img-right" />
+            <img src="images/names.PNG" class="img-right" />
             <p>
               Names field is <b>optional</b>. You can enable or disable it in a
               <b>settings</b>. It will provide a name in a format
@@ -263,7 +290,7 @@
         <div class="row">
           <div class="col">
             <h5>Unite</h5>
-            <img src="images/unite.png" class="img-left" />
+            <img src="images/unite.PNG" class="img-left" />
             <p>
               This option is a great one once you get used to it! It's just do
               what its said - <b>unite</b>! More specifecly unite short
@@ -334,6 +361,11 @@
       </div>
     </div>
 
+    <footer>
+      <div class="text-center mt-4 mb-4 ">
+        <h3>Made by 4evterg</h3>
+      </div>
+    </footer>
     <!-- Scripts -->
     <script src="js/sCache.js"></script>
     <script src="js/controller.js"></script>

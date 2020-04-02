@@ -6,6 +6,8 @@ var unite_cb = document.getElementById("unite_cb");
 var unite_length = document.getElementById("unite_length");
 var unite_time = document.getElementById("unite_time");
 
+var autodown_cb = document.getElementById("autodown_cb");
+
 names_cb.onchange = function() {
   if (names_cb.checked) {
     names_col.classList.add("show");
@@ -31,6 +33,16 @@ unite_cb.onchange = function() {
 // call onchange to correctly displaying names after refresh (F5)
 unite_cb.onchange();
 
+autodown_cb.onchange = function(){
+	if (autodown_cb.checked) {
+    
+    sCache.save("autodown_cb", true);
+  } else {
+
+    sCache.save("autodown_cb", false);
+  }
+};
+autodown_cb.onchange();
 // copy output textarea text on click
 document.getElementById("output_box").onclick = () => {
   document.getElementById("output_box").select();
