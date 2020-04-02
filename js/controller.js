@@ -19,8 +19,6 @@ function input() {
 
   const output_box = document.getElementById("output_box");
 
-  
-
   //clear output from the previous time
   Sub.output = [];
 
@@ -71,12 +69,22 @@ function input() {
     combine(unite_length.value, unite_time.value);
   }
 
-  convert();
+  if (srt_cb.checked) {
+    convert("srt");
+  } else if (ass_cb.checked) {
+    convert("ass");
+  } else {
+    messages("choose a format to convert to (srt/ass)", "e");
+  }
 
   //output results
   output_box.value = Sub.output.join("\n");
-  if (autodown_cb.checked){
-    download("subtitles.srt", Sub.output.join("\n"));
+  if (autodown_cb.checked && (srt_cb.checked || ass_cb.checked)) {
+    if (srt_cb.checked) {
+      download("subtitles.srt", Sub.output.join("\n"));
+    } else {
+      download("subtitles.ass", Sub.output.join("\n"));
+    }
   }
 }
 

@@ -8,6 +8,9 @@ var unite_time = document.getElementById("unite_time");
 
 var autodown_cb = document.getElementById("autodown_cb");
 
+var srt_cb = document.getElementById("srt_cb");
+var ass_cb = document.getElementById("ass_cb");
+
 names_cb.onchange = function() {
   if (names_cb.checked) {
     names_col.classList.add("show");
@@ -19,6 +22,7 @@ names_cb.onchange = function() {
 };
 // call onchange to correctly displaying names after refresh (F5)
 names_cb.onchange();
+
 unite_cb.onchange = function() {
   if (unite_cb.checked) {
     unite_length.disabled = 0;
@@ -33,16 +37,30 @@ unite_cb.onchange = function() {
 // call onchange to correctly displaying names after refresh (F5)
 unite_cb.onchange();
 
-autodown_cb.onchange = function(){
-	if (autodown_cb.checked) {
-    
+autodown_cb.onchange = function() {
+  if (autodown_cb.checked) {
     sCache.save("autodown_cb", true);
   } else {
-
     sCache.save("autodown_cb", false);
   }
 };
 autodown_cb.onchange();
+
+let format_cb = function() {
+  if (srt_cb.checked) {
+    sCache.save("srt_cb", true);
+    sCache.save("ass_cb", false);
+  } else {
+    sCache.save("srt_cb", false);
+    sCache.save("ass_cb", true);
+  }
+};
+
+srt_cb.onchange = format_cb;
+ass_cb.onchange = format_cb;
+
+srt_cb.onchange();
+ass_cb.onchange();
 // copy output textarea text on click
 document.getElementById("output_box").onclick = () => {
   document.getElementById("output_box").select();
